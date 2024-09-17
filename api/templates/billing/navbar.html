@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+{% include 'header.html' %}
+<html lang="en">
+  <header class="no-print">
+    <div class="bg-white m-1 rounded-xl px-2 flex gap-4">
+        <div class="flex items-center w-full">
+            <a id="nav_logo" aria-current="page" class="mb-1" href="/">
+                <svg style="height: 7vh; margin-top: 3px; margin-left: 3px;" viewBox="0 0 158 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.456 26.08H14.016V76H3.456V26.08ZM24.64 46.56H37.76L25.216 58.72L39.04 76H26.176L12.096 58.72L24.64 46.56ZM43.0825 26.08H54.1545V76H43.0825V26.08ZM60.377 35.872C60.377 34.1653 60.9743 32.7787 62.169 31.712C63.4063 30.6453 64.8783 30.112 66.585 30.112C68.3343 30.112 69.8063 30.6453 71.001 31.712C72.2383 32.7787 72.857 34.1653 72.857 35.872C72.857 37.536 72.2383 38.9013 71.001 39.968C69.8063 41.0347 68.3343 41.568 66.585 41.568C64.8783 41.568 63.4063 41.0347 62.169 39.968C60.9743 38.9013 60.377 37.536 60.377 35.872ZM61.273 46.56H71.897V76H61.273V46.56ZM101.481 26.08H112.553V76H101.481V26.08ZM77.609 61.28C77.609 57.9093 78.2703 55.0933 79.593 52.832C80.9583 50.5707 82.6863 48.864 84.777 47.712C86.9103 46.5173 89.129 45.92 91.433 45.92C93.9077 45.92 96.105 46.5387 98.025 47.776C99.945 49.0133 101.46 50.784 102.569 53.088C103.721 55.3493 104.297 58.08 104.297 61.28C104.297 64.4373 103.721 67.168 102.569 69.472C101.46 71.776 99.945 73.5467 98.025 74.784C96.105 76.0213 93.9077 76.64 91.433 76.64C89.129 76.64 86.9103 76.064 84.777 74.912C82.6863 73.7173 80.9583 71.9893 79.593 69.728C78.2703 67.424 77.609 64.608 77.609 61.28ZM89.257 61.28C89.257 62.56 89.5343 63.712 90.089 64.736C90.6437 65.76 91.3903 66.5493 92.329 67.104C93.2677 67.6587 94.2917 67.936 95.401 67.936C96.3823 67.936 97.3423 67.68 98.281 67.168C99.2197 66.6133 99.9877 65.8453 100.585 64.864C101.182 63.8827 101.481 62.688 101.481 61.28C101.481 59.872 101.182 58.6773 100.585 57.696C99.9877 56.7147 99.2197 55.968 98.281 55.456C97.3423 54.9013 96.3823 54.624 95.401 54.624C94.2917 54.624 93.2677 54.9013 92.329 55.456C91.3903 56.0107 90.6437 56.8 90.089 57.824C89.5343 58.8053 89.257 59.9573 89.257 61.28ZM135.52 76.64C131.893 76.64 128.757 76.0213 126.112 74.784C123.509 73.504 121.504 71.7333 120.096 69.472C118.688 67.168 117.984 64.4373 117.984 61.28C117.984 58.08 118.667 55.3493 120.032 53.088C121.397 50.784 123.36 49.0133 125.92 47.776C128.48 46.5387 131.552 45.92 135.136 45.92C138.72 45.92 141.728 46.496 144.16 47.648C146.592 48.8 148.448 50.4853 149.728 52.704C151.008 54.88 151.648 57.568 151.648 60.768C151.648 61.28 151.627 61.792 151.584 62.304C151.584 62.7733 151.563 63.2 151.52 63.584H124.064V57.888H141.408L139.04 60.832C139.253 60.4907 139.445 60.1067 139.616 59.68C139.787 59.2533 139.872 58.8907 139.872 58.592C139.872 57.3973 139.659 56.3947 139.232 55.584C138.848 54.7307 138.272 54.0907 137.504 53.664C136.779 53.1947 135.904 52.96 134.88 52.96C133.6 52.96 132.533 53.2587 131.68 53.856C130.827 54.4533 130.187 55.3707 129.76 56.608C129.333 57.8027 129.12 59.3387 129.12 61.216C129.077 62.88 129.291 64.288 129.76 65.44C130.229 66.592 130.912 67.488 131.808 68.128C132.704 68.7253 133.813 69.024 135.136 69.024C136.757 69.024 138.123 68.7467 139.232 68.192C140.384 67.5947 141.28 66.7413 141.92 65.632L151.904 67.616C150.325 70.6453 148.171 72.9067 145.44 74.4C142.752 75.8933 139.445 76.64 135.52 76.64Z" fill="black" />
+                    <path d="M135.042 32.08C124.53 16.2185 132.377 10.0488 156.244 1C159.385 27.3092 152.819 38.6493 135.042 32.08Z" stroke="#93DC70" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M127 38C142.479 28.754 147.47 22.5138 151.126 9.88" stroke="#93DC70" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </a>
+            <div class="p-0 w-px h-6 bg-slate-300 md:my-6 my-3 mx-4"></div>
+            <button id="store_name" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border-2 border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"></button>
+            <div class="p-0 w-px h-6 bg-slate-300 md:my-6 my-3 mx-4"></div>
+            <div id="current_time" class="antialiased font-sans font-normal text-sm text-gray-900 leading-6 flex items-center h-full whitespace-nowrap border-solid border-transparent hover:text-gray-900 bg-transparent border-0 m-0 p-0"></div>
+        </div>
+        
+        <div class="flex justify-end items-center w-full gap-4">
+            <div class="flex justify-end items-center w-full gap-4">
+                <div onclick="redirect(event)" id="nav_checkout">
+                    Checkout
+                </div>
+                <div onclick="redirect(event)" id="nav_transactions">
+                    Transactions
+                </div>
+            </div>
+            <div class="p-0 w-px h-6 bg-slate-600 md:my-6 my-3 mx-4"></div>
+            <button onclick="change_cashier()" class="flex items-center space-x-2 bg-white hover:bg-gray-100 text-gray-800 px-3 py-2 rounded-md focus:outline-none focus:bg-gray-100" type="button">
+                  <div class="flex items-center">
+                    <div class="relative inline-flex items-center justify-center w-8 h-8 overflow-hidden bg-gray-100 rounded-full">
+                      <span id="cashier_initials" class="font-medium text-gray-600"></span>
+                    </div>
+                    <div class="ml-2 text-sm">
+                      <div id="cashier_name" class="whitespace-nowrap font-medium"></div>
+                    </div>
+                  </div>
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 16">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5m0 6 4 4 4-4"></path>
+                  </svg>
+            </button>
+        </div>
+    </div>
+  </header>
+  <div id="cashier_modal_bg" class="z-50 fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center hidden">
+        <div id="modal_cashier_select" style="width: 50%;" class="overflow-y-auto overflow-x-hidden z-50 hidden">
+            <div class="relative p-4 w-full max-w-2xl max-h-full">
+                <div class="relative bg-white rounded-lg shadow">
+                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+                        <h3 class="text-xl font-semibold text-gray-900">
+                            Select Cashier
+                        </h3>
+                        <button onclick="close_cashier_modal()" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                        </button>
+                    </div>
+                    <div class="p-4 md:p-5 space-y-4">
+                        <div class="relative">
+                            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                                </svg>
+                            </div>
+                            <input type="search" id="cashier_search" class="block w-full p-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Search Cashier" required />
+                        </div>
+                        <ul id="user-list" class="mt-2 overflow-y-auto max-h-60">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>
+<script>
+
+    const nav_logo = document.getElementById('nav_logo');
+    const nav_checkout = document.getElementById('nav_checkout');
+    const nav_transactions = document.getElementById('nav_transactions');
+    const nav_selected = "font-semibold border-b-2 border-blue-600 text-blue-600 cursor-pointer";
+    const nav_unselected = "font-semibold text-gray-600 border-b-2 border-white cursor-pointer hover:text-blue-600";
+    const url_params = window.location.pathname;
+    console.log(url_params)
+
+    if (url_params.includes('checkout')) {
+        nav_checkout.className = nav_selected;
+        nav_transactions.className = nav_unselected;
+    } else if (url_params.includes('transactions')) {
+        nav_checkout.className = nav_unselected;
+        nav_transactions.className = nav_selected;
+    } else {
+        nav_checkout.className = nav_unselected;
+        nav_transactions.className = nav_unselected;
+    }
+
+    function redirect(event){
+        if (event.target.innerText === 'Checkout') {
+            window.location.href = '/checkout';
+        } else if (event.target.innerText === 'Transactions') {
+            window.location.href = '/transactions';
+        }
+    }
+
+    const current_time = document.getElementById('current_time');
+    var currentDate = new Date();
+    var day = currentDate.toLocaleDateString('en-US', { weekday: 'long' })  
+    var date = currentDate.getDate();
+    var month = currentDate.toLocaleDateString('en-US', { month: 'long' });
+    var year = currentDate.getFullYear();
+    current_time.innerHTML = `${day}, ${date} ${month} ${year}`;
+
+    const cashier_modal_bg = document.getElementById("cashier_modal_bg");
+    const modal_cashier_select = document.getElementById("modal_cashier_select");
+
+    const cashier_name = document.getElementById("cashier_name");
+    const cashier_initials = document.getElementById("cashier_initials");
+    current_cashier = findCookie("current_cashier") || "Select Cashier";
+    cashier_name.innerHTML = current_cashier;
+    cashier_initials.innerHTML = current_cashier.split(" ").map((n)=>n[0]).join("");
+
+    function change_cashier(){
+        cashier_modal_bg.classList.remove("hidden");
+        modal_cashier_select.classList.remove("hidden");
+    }
+
+    const userList = findCookie("employees");
+    console.log('userlist',userList);
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const userSearchInput = document.getElementById('cashier_search');
+        userSearchInput.addEventListener('input', function(event) {
+        filterUsers(event.target.value);
+        });
+        renderUserList(userList); 
+    });
+
+    function filterUsers(searchTerm) {
+        const filteredUsers = userList.filter(userName =>
+        userName.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        renderUserList(filteredUsers); 
+    }
+
+    function renderUserList(users) {
+        const userListElement = document.getElementById('user-list');
+        userListElement.innerHTML = '';
+
+        users.forEach(userName => {
+        const li = document.createElement('li');
+        li.textContent = userName;
+        li.classList.add('cursor-pointer', 'px-4', 'py-2', 'hover:bg-gray-100');
+        li.addEventListener('click', () => {
+            handleUserSelection(userName);
+        });
+        userListElement.appendChild(li);
+        });
+    }
+    
+
+    function handleUserSelection(userName) {
+        setCookie("current_cashier", userName);
+        cashier_name.innerHTML = userName;
+        cashier_initials.innerHTML = userName.split(" ").map((n)=>n[0]).join("");
+        cashier_modal_bg.classList.add("hidden");
+        modal_cashier_select.classList.add("hidden");
+    }
+
+    function close_cashier_modal(){
+        cashier_modal_bg.classList.add("hidden");
+        modal_cashier_select.classList.add("hidden");
+    }
+
+    const store_name_element = document.getElementById("store_name");
+    const store_name = findCookie("store_name");
+    store_name_element.innerHTML = `<svg class="w-3.5 h-3.5 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 21">
+                                        <path d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z"/>
+                                    </svg>` + store_name;
+                                    
+</script>

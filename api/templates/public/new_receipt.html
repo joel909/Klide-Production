@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+{% include 'header.html' %}
+<html>
+  <body class="m-2">
+
+    <div id="background_gray" class="fixed z-50 inset-0 flex items-center justify-center bg-black bg-opacity-50">
+        <div id="spinner" class="hidden rounded-lg shadow-lg">
+            <div role="status">
+                <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
+                    <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
+                </svg>
+            </div>
+        </div>
+        <div id="connect_button" onclick="connect()" class="rounded-lg shadow-lg">
+            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 focus:outline-none">Connect</button>
+        </div>
+    </div>
+
+      <div class="relative flex flex-col bg-white shadow-lg rounded-xl pointer-events-auto">
+        <div class="relative overflow-hidden min-h-32 bg-green-400 text-center rounded-t-xl">
+          <figure class="absolute inset-x-0 bottom-0 -mb-px">
+            <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1920 100.1">
+              <path fill="currentColor" class="fill-white" d="M0,0c0,0,934.4,93.4,1920,0v100.1H0L0,0z"></path>
+            </svg>
+          </figure>
+          
+        </div>
+      
+        <div class="relative z-10 -mt-12">
+          <span class="mx-auto flex justify-center items-center w-32 rounded-xl bg-white text-gray-700">
+            <svg class="h-16 mt-2" viewBox="0 0 158 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3.456 26.08H14.016V76H3.456V26.08ZM24.64 46.56H37.76L25.216 58.72L39.04 76H26.176L12.096 58.72L24.64 46.56ZM43.0825 26.08H54.1545V76H43.0825V26.08ZM60.377 35.872C60.377 34.1653 60.9743 32.7787 62.169 31.712C63.4063 30.6453 64.8783 30.112 66.585 30.112C68.3343 30.112 69.8063 30.6453 71.001 31.712C72.2383 32.7787 72.857 34.1653 72.857 35.872C72.857 37.536 72.2383 38.9013 71.001 39.968C69.8063 41.0347 68.3343 41.568 66.585 41.568C64.8783 41.568 63.4063 41.0347 62.169 39.968C60.9743 38.9013 60.377 37.536 60.377 35.872ZM61.273 46.56H71.897V76H61.273V46.56ZM101.481 26.08H112.553V76H101.481V26.08ZM77.609 61.28C77.609 57.9093 78.2703 55.0933 79.593 52.832C80.9583 50.5707 82.6863 48.864 84.777 47.712C86.9103 46.5173 89.129 45.92 91.433 45.92C93.9077 45.92 96.105 46.5387 98.025 47.776C99.945 49.0133 101.46 50.784 102.569 53.088C103.721 55.3493 104.297 58.08 104.297 61.28C104.297 64.4373 103.721 67.168 102.569 69.472C101.46 71.776 99.945 73.5467 98.025 74.784C96.105 76.0213 93.9077 76.64 91.433 76.64C89.129 76.64 86.9103 76.064 84.777 74.912C82.6863 73.7173 80.9583 71.9893 79.593 69.728C78.2703 67.424 77.609 64.608 77.609 61.28ZM89.257 61.28C89.257 62.56 89.5343 63.712 90.089 64.736C90.6437 65.76 91.3903 66.5493 92.329 67.104C93.2677 67.6587 94.2917 67.936 95.401 67.936C96.3823 67.936 97.3423 67.68 98.281 67.168C99.2197 66.6133 99.9877 65.8453 100.585 64.864C101.182 63.8827 101.481 62.688 101.481 61.28C101.481 59.872 101.182 58.6773 100.585 57.696C99.9877 56.7147 99.2197 55.968 98.281 55.456C97.3423 54.9013 96.3823 54.624 95.401 54.624C94.2917 54.624 93.2677 54.9013 92.329 55.456C91.3903 56.0107 90.6437 56.8 90.089 57.824C89.5343 58.8053 89.257 59.9573 89.257 61.28ZM135.52 76.64C131.893 76.64 128.757 76.0213 126.112 74.784C123.509 73.504 121.504 71.7333 120.096 69.472C118.688 67.168 117.984 64.4373 117.984 61.28C117.984 58.08 118.667 55.3493 120.032 53.088C121.397 50.784 123.36 49.0133 125.92 47.776C128.48 46.5387 131.552 45.92 135.136 45.92C138.72 45.92 141.728 46.496 144.16 47.648C146.592 48.8 148.448 50.4853 149.728 52.704C151.008 54.88 151.648 57.568 151.648 60.768C151.648 61.28 151.627 61.792 151.584 62.304C151.584 62.7733 151.563 63.2 151.52 63.584H124.064V57.888H141.408L139.04 60.832C139.253 60.4907 139.445 60.1067 139.616 59.68C139.787 59.2533 139.872 58.8907 139.872 58.592C139.872 57.3973 139.659 56.3947 139.232 55.584C138.848 54.7307 138.272 54.0907 137.504 53.664C136.779 53.1947 135.904 52.96 134.88 52.96C133.6 52.96 132.533 53.2587 131.68 53.856C130.827 54.4533 130.187 55.3707 129.76 56.608C129.333 57.8027 129.12 59.3387 129.12 61.216C129.077 62.88 129.291 64.288 129.76 65.44C130.229 66.592 130.912 67.488 131.808 68.128C132.704 68.7253 133.813 69.024 135.136 69.024C136.757 69.024 138.123 68.7467 139.232 68.192C140.384 67.5947 141.28 66.7413 141.92 65.632L151.904 67.616C150.325 70.6453 148.171 72.9067 145.44 74.4C142.752 75.8933 139.445 76.64 135.52 76.64Z" fill="black" />
+              <path d="M135.042 32.08C124.53 16.2185 132.377 10.0488 156.244 1C159.385 27.3092 152.819 38.6493 135.042 32.08Z" stroke="#93DC70" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M127 38C142.479 28.754 147.47 22.5138 151.126 9.88" stroke="#93DC70" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </span>
+        </div>
+      
+        <div class="p-4 sm:p-7 overflow-y-auto">
+          <div class="text-center">
+            <div id="store" class="text-lg font-semibold text-gray-800"></div>
+            <p id="receipt_id" class="text-sm text-gray-500"></p>
+          </div>
+      
+          <div class="mt-5 sm:mt-10">
+            <h4 class="text-xs font-semibold uppercase text-gray-800">Receipt Items</h4>
+            <ul class="mt-3 flex flex-col" id="receipt_items">
+            </ul>
+          </div>
+          
+          <div class="mt-5 sm:mt-10">
+              <h4 class="text-xs font-semibold uppercase text-gray-800">Payment Summary</h4>
+              <ul class="mt-3 flex flex-col">
+                <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+                  <div class="flex items-center justify-between w-full">
+                    <span class="text-xs uppercase">Subtotal</span>
+                    <span id="subtotal">₹0.00</span>
+                  </div>
+                </li>
+                <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+                  <div class="flex items-center justify-between w-full">
+                    <span class="text-xs uppercase">Gst</span>
+                    <span id="gst">₹0.00</span>
+                  </div>
+                </li>
+                <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+                  <div onclick="discount()" class="cursor-pointer flex items-center justify-between w-full">
+                    <span class="text-xs text-purple-700 uppercase">Discount <span id="discount_field"></span>
+                    </span>
+                    <span id="discount_value" class="text-purple-700">₹0.00</span>
+                  </div>
+                </li>
+                <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-semibold bg-gray-50 border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+                  <div class="flex items-center justify-between w-full">
+                    <span class="text-xs uppercase">Total</span>
+                    <span id="total">₹0.00</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>
+
+<script>
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const connection_id = urlParams.get('connection_id');
+  var received_data = {};
+  var receipt = [];
+  const spinner = document.getElementById('spinner');
+  const background_gray = document.getElementById('background_gray');
+  const connect_button = document.getElementById('connect_button');
+
+  function connectToPeer(peer, peer_id) {
+      const conn = peer.connect(peer_id);
+      console.log('Connecting to peer with ID: ' + peer_id);
+
+      conn.on('open', function() {
+          console.log('Connected to peer with ID: ' + peer_id);
+          conn.send('init');
+      });
+
+      conn.on('data', function(data) {
+          received_data = data;
+          receipt = data.receipt;
+          console.log('Received data from peer: ' + data);
+          update_receipt();
+      });
+
+      conn.on('error', function(err) {
+          console.log('Error connecting to peer:', err);
+          setupPeerConnection(peer_id);
+      });
+  }
+
+  function setupPeerConnection(connection_id) {
+      console.log('Setting up peer connection with ID: ' + connection_id);
+      const peer = new Peer({secure: true});
+
+      peer.on('open', function(id) {
+          console.log('My peer ID is: ' + id);
+          connectToPeer(peer, connection_id);
+      });
+
+      peer.on('error', function(err) {
+          console.log('Peer connection error:', err);
+          setupPeerConnection(connection_id);
+      });
+  }
+  
+  function generate_receipt_items(){
+      const receipt_items = document.getElementById('receipt_items');
+      receipt_items.innerHTML = '';
+
+      receipt.forEach(product => {
+          const listItem = document.createElement('li');
+          listItem.classList.add('inline-flex', 'items-center', 'gap-x-2', 'py-3', 'px-4', 'text-sm', 'border', 'text-gray-800', '-mt-px', 'first:rounded-t-lg', 'first:mt-0', 'last:rounded-b-lg');
+
+          const listItemContent = `
+              <div class="flex items-center justify-between w-full">
+                  <div class="flex flex-col justify-between">
+                      <div class="font-medium truncate w-52 text-gray-800">${product.name}</div>
+                      <div class="flex items-center">
+                          <span class="text-xs uppercase mr-2">Qty: ${product.qty}</span>
+                          <span class="text-xs uppercase">Cost: ${product.price}</span>
+                      </div>
+                  </div>
+                  <div class="flex flex-col justify-between items-end">
+                      <span class="text-xs uppercase">Total</span>
+                      <span class="font-medium text-gray-800">${calculateTotal(product.qty, product.price)}</span>
+                  </div>
+              </div>
+          `;
+
+          listItem.innerHTML = listItemContent;
+          receipt_items.appendChild(listItem);
+      });
+  }
+
+  function calculateTotal(quantity, price){
+      const numericPrice = parseFloat(price.replace('₹', ''));
+      return `₹${(quantity * numericPrice).toFixed(2)}`;
+  }
+
+  function update_receipt(){
+
+      generate_receipt_items();
+
+      const store = document.getElementById('store');
+      const receipt_id = document.getElementById('receipt_id');
+      const subtotal = document.getElementById('subtotal');
+      const gst = document.getElementById('gst');
+      const discount_value = document.getElementById('discount_value');
+      const total = document.getElementById('total');
+
+      store.innerHTML = received_data.store_name;
+      receipt_id.innerHTML = 'Receipt #' + received_data.receipt_id;
+      subtotal.innerHTML = '₹' + parseFloat(received_data.subtotal).toFixed(2);
+      gst.innerHTML = '₹' + parseFloat(received_data.gst).toFixed(2);
+      discount_value.innerHTML = '₹' + parseFloat(received_data.discount).toFixed(2);
+      total.innerHTML = '₹' + parseFloat(received_data.total).toFixed(2);
+      
+      background_gray.classList.add('hidden');
+      spinner.classList.add('hidden');
+  }
+
+  function connect(){
+      connect_button.classList.add('hidden');
+      spinner.classList.remove('hidden');
+      setupPeerConnection(connection_id);
+  }
+
+</script>

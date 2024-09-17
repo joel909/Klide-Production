@@ -1,0 +1,181 @@
+<!doctype html>
+
+{% include 'header.html' %}
+<script>
+  VerifyCookies_Redirect()
+    const merchant_id = findCookie("merchant_id")
+    const device_ID = findCookie("device_id")
+    /*if(cookies==""&&window.location.pathname!="/merchant/account/login"){
+        window.location.href = "/merchant/account/login"
+    }*/
+
+    //getting merchantID and Device ID from cookies
+    /*let merchant_id = String(cookies.split(";")[0].split("=")[1])
+    const device_id = cookies.split(";")[1].split("=")[1]
+    const merchant_name = String(cookies.split(";")[2].split("=")[1])
+    merchant_id = "352482"
+    console.log("merchant iD"+merchant_id)
+    console.log("Device ID"+device_id)
+    console.log("Merchant name"+merchant_name)*/
+
+    //initialisiing barcode info
+    let Barcodedata = []
+
+    //Function to request the Barcode data with the merchant id from Flask
+    async function FetchBarcodeData() {
+      console.log("MERCHANT_ID : "+merchant_id)
+    const response = await fetch('/get/barcodedatabase', {
+    method: 'POST',
+
+    headers: {'Content-Type': 'application/json'},
+
+    body: JSON.stringify({"merchantid":merchant_id})
+  })
+
+  //waitig for response Text
+  const responseText = await response.text();
+  //converting to proper json 
+  Barcodedata = JSON.parse(responseText)// logs 'OK'
+  return Barcodedata
+
+}
+
+
+//waitin for the data and then putting json in barcode info file
+//const Barcodedata = [{"barcode":"028400110457","name": "Lays", "price": "90", "category": "chips"}, {"barcode":"044000088422","price ": "60", "category": "chips", "name": "Amul Pure Ghee Clarified Butter 1L"}, {"barcode":"806698784142","category": "kid food ", "price": "800", "name": "Oreo"},{"barcode":"04406600088422","price ": "60", "category": "chips", "name": "Amul Pure Ghee Clarified Butter 1L"}, {"barcode":"803698784142","category": "kid food ", "price ": "800", "name": "Oreo"}]
+if (!window.indexedDB){console.log(`Your browser doesn't support IndexedDB`);}
+
+//checks if database exists cuz if database is new then only on upgadeneeded runs DO NOT CHANGE VERSION ANYTIME will lead to unexpecte errors
+const dbname = "Database"
+var dbExists = true;
+const request = window.indexedDB.open(dbname)
+//this function only runs if it dosent exist 
+request.onupgradeneeded =  async function (e){
+  dbExists = false;
+  //cancels or ends the transaction as 2 transactions cannont run at the same time 
+  e.target.transaction.abort();
+  //getting all the barcode data
+  
+  Barcodedata =  await FetchBarcodeData()
+  Barcodedata = paraseJsonString(Barcodedata)
+  
+  //create a new database a a database does not exist
+  CreateIndexedDb(dbname,Barcodedata)
+}
+
+            
+  //create new IndexedDB and then sets version to 1 due to which onupgradeneeded runs
+  function CreateIndexedDb(dbname,Barcodedata){
+        const request = indexedDB.open(dbname,1);
+        request.onerror = (event) => {console.error(`Database error: ${event.target.errorCode}`);}
+        //adds all the data to the indexed db
+        request.onupgradeneeded = (event) => {
+        const db = event.target.result
+        const objectStore = db.createObjectStore("Barcodes", { keyPath: "id"});
+        objectStore.createIndex("barcodes","name",{unique:false})
+        objectStore.transaction.oncomplete = (event) => {
+            const barcodeobjectstore = db.transaction("Barcodes","readwrite").objectStore("Barcodes")
+            Barcodedata.forEach((barcode)=>{
+              console.log(barcode)
+              barcodeobjectstore.add(barcode)})}}
+            
+            }  
+
+  //update DATA -still for console command and testing
+  function UpdateData(data){
+
+    dbname = "Database"
+        const request = indexedDB.open(dbname,1);
+
+        request.onerror = (event) => {
+        console.error(`Database error: ${event.target.errorCode}`);
+    }
+    request.onsuccess = (event)=>{
+        //console.log("Here")
+        const db = event.target.result
+        const transaction = db.transaction(["Barcodes"], "readwrite");
+        transaction.oncomplete = (event) => {console.log("Connected to DB");};
+        transaction.onerror = (event) => {console.log("error")};
+        const objectStore = transaction.objectStore("Barcodes")
+        req = objectStore.add(data)
+        req.onerror=(event)=>{console.log("error")}
+    }}
+
+
+    function paraseJsonString(data){
+  console.log(data)
+    const converted = data.map(str => JSON.parse(str))
+    //console.log(converted)
+    return converted
+}
+
+
+
+
+//Returns all the data inside the indexed DB
+async function ReadData() {
+  const dbname = "Database";
+  const request = indexedDB.open(dbname)
+
+  return new Promise((resolve, reject) => {
+    request.onerror = (event) => {
+      //console.error(`Database error: ${event.target.errorCode}`);
+      reject(event.target.errorCode);
+    };
+
+    request.onsuccess = (event) => {
+      const db = event.target.result;
+      const transaction = db.transaction(["Barcodes"]);
+      const objectStore = transaction.objectStore("Barcodes");
+      const getRequest = objectStore.getAll();
+
+      getRequest.onerror = (event) => {
+        //console.log("ERROR");
+        reject(event.target.error);
+      };
+
+      getRequest.onsuccess = (event) => {
+        const results = getRequest.result;
+        //console.log("Results:", results);
+        resolve(results);
+      };
+    };
+  });
+}
+
+//test function to get the name of a particular product by passing the barcode
+async function ReadValue(value){
+  const dbname = "Database";
+  const request = indexedDB.open(dbname);
+    return new Promise((resolve,reject)=>{
+      request.onsuccess=()=>{
+        const db = event.target.result;
+      const transaction = db.transaction(["Barcodes"]);
+      const objectStore = transaction.objectStore("Barcodes");
+      const getRequest = objectStore.get(value);
+      getRequest.onerror = (event) => {
+        //console.log("ERROR");
+        reject(event.target.error);
+      };
+
+      getRequest.onsuccess = (event) => {
+        const results = getRequest.result;
+        //console.log("Results:", results);
+        resolve(results.name);
+      };
+
+      }
+      request.onerror=(event)=>{
+        reject(event.target.error)
+      }
+    })
+}
+
+</script>
+
+
+
+
+<h1>DASHBOARD</h1>
+
+

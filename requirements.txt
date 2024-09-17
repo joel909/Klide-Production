@@ -1,0 +1,6 @@
+Flask
+firebase-admin
+google-cloud-firestore
+google-cloud-storage
+mailersend
+gunicorn

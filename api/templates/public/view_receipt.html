@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+{% include 'header.html' %}
+<html>
+  <body class="m-2">        
+        
+    </div>
+
+
+    
+    <div class="relative flex flex-col bg-white shadow-lg rounded-xl pointer-events-auto">
+        <div class="relative overflow-hidden min-h-32 bg-green-400 text-center rounded-t-xl">
+          <figure class="absolute inset-x-0 bottom-0 -mb-px">
+            <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1920 100.1">
+              <path fill="currentColor" class="fill-white" d="M0,0c0,0,934.4,93.4,1920,0v100.1H0L0,0z"></path>
+            </svg>
+           
+          </figure>
+          <h1 class="px-6 py-4 font-semibold truncate-product w-2/5 text-gray-900">JugMugHuglehsy Stores</h1>
+        </div>
+        
+                <div onclick="redirect(event)" id="nav_checkout">
+                    Checkout
+                </div>
+               
+
+    
+
+      
+
+<div class="relative overflow-x-auto">
+   
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <table id="product_table" class="w-full text-sm table-auto  text-left rtl:text-right text-gray-500">
+            <style>
+                th {
+                  text-align: center;
+                  vertical-align: middle;
+                }
+                th.qty_header {
+                  text-align: left;
+                }
+              </style>
+              
+            <thead class="text-xs text-gray-900 uppercase bg-gray-100">
+              <tr>
+                <th scope="row" class="px-6 py-3">Product</th>
+                <th scope="row" class="px-6 py-3 ">Qty</th>
+                <th scope="row" class="px-6 py-3 qty_header">Price</th>
+                <th scope="row" class="px-11 py-3">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+                
+
+            </tbody>
+          </table>
+        </div>
+
+</div
+>
+<div>
+    <style>
+          h5.total {
+        text-align: right;
+        vertical-align: middle;
+
+      }
+    </style>
+  
+  
+    
+
+</div>
+<a class="inline-flex items-cente max-w-10xl mt-3 p-3 bg-white rounded-full shadow dark:bg-green-500">
+  <div class="flex items-center justify-between w-full"> <!-- Added flex and items-center -->
+      <h5 class="text-xl font-bold tracking-wider ml-4 text-gray-900 dark:text-white" style="display: inline-block;">Total</h5>
+      <h5 id="total_tv" class="text-lg total font-bold tracking-wider text-gray-900 dark:text-white px-11  ml-auto"></h5> <!-- Added ml-auto -->
+  </div>
+</a>
+
+
+          <div class="mt-5 sm:mt-10">
+              <h4 class="px-6 py-4 font-semibold truncate-product w-2/5 text-gray-900">Payment Summary</h4>
+              <ul class="mt-3 flex flex-col">
+                <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+                  <div class="flex items-center justify-between w-full">
+                    <span class="text-xs uppercase">Subtotal</span>
+                    <span id="subtotal">₹0.00</span>
+                  </div>
+                </li>
+                <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+                  <div class="flex items-center justify-between w-full">
+                    <span class="text-xs uppercase">Gst</span>
+                    <span id="gst">₹0.00</span>
+                  </div>
+                </li>
+                <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+                  <div onclick="discount()" class="cursor-pointer flex items-center justify-between w-full">
+                    <span class="text-xs text-purple-700 uppercase">Discount <span id="discount_field"></span>
+                    </span>
+                    <span id="discount_value" class="text-purple-700">₹0.00</span>
+                  </div>
+                </li>
+                <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-semibold bg-gray-50 border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+                  <div class="flex items-center justify-between w-full">
+                    <span class="text-xs uppercase">Total</span>
+                    <span id="total">₹0.00</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+  </body>
+</html>
+
+<script>
+
+
+
+
+const receipt_data = {{receipt_data | safe}}
+//const cleanedJsonString = raw_receipt_data.replace(/^'|'$/g, '');
+//const receipt_data = JSON.parse(cleanedJsonString.replace(/'/g, '"'))
+console.log("RECEIP HDUFHEOFH>iT DATA : "+receipt_data)
+
+formatted_receipt = []
+
+
+function map_receipt_data(){
+    receipt_items = receipt_data.receipt_data
+    for (let index = 0; index < receipt_items.length; index++) {
+        const product = receipt_items[index];
+        console.log(parseFloat(product.qty)*parseFloat(product.price.replace("₹","")))
+        formatted_receipt.push({
+        "name":product.name,
+        "price":product.price,
+        "qty":product.qty,
+        "amount":(parseFloat(product.qty)*parseFloat(product.price.replace("₹","")))
+    })
+    } 
+}
+generate_receipt_html()
+
+
+  function generate_receipt_html(){
+    map_receipt_data()
+      const receipt_items = document.getElementById('product_table');
+      const store = document.getElementById('store');
+      const receipt_id = document.getElementById('receipt_id');
+      const subtotal = document.getElementById('subtotal');
+      const gst = document.getElementById('gst');
+      const discount_value = document.getElementById('discount_value');
+      const total = document.getElementById('total');
+      total_tv = document.getElementById("total_tv")
+      total_tv.innerHTML = '₹' + parseFloat(receipt_data.total_purchase_value).toFixed(2);
+
+    const tax_brackets = receipt_data["tax_analysis_summary"]
+    var subtotal_value = 0
+    var gst_value = 0
+    for(index=0;index<Object.keys(tax_brackets).length;index++){
+        const current_key = Object.keys(tax_brackets)[index]
+        subtotal_value += tax_brackets[current_key]["Total_Taxable_value"]
+        gst_value += tax_brackets[current_key]["tax_value"]
+    }
+    final_subtotal_value = subtotal_value.toFixed(2)
+    final_gst_value = gst_value.toFixed(2)
+    console.log("subtotal : ",final_subtotal_value)
+    console.log("Gst value : ",final_gst_value)
+
+
+    discount_value.innerHTML = '₹'+"0"
+      subtotal.innerHTML = '₹' + final_subtotal_value;
+      gst.innerHTML = '₹' + final_gst_value;
+      total.innerHTML = '₹' + parseFloat(receipt_data.total_purchase_value).toFixed(2);
+
+    
+      formatted_receipt.forEach(product => {
+        console.log(product.name)
+        const row =  `
+        <style>
+                td.centered{
+                  text-align: center;
+                  vertical-align: middle;
+                }
+                td.qty_header {
+                  text-align: left;
+                }
+              </style>
+      <tr class="bg-white border-b">
+                    <td class="px-6 py-4 font-semibold truncate-product w-2/5 text-gray-900">${product.name}</td>
+                    <td class="centered px-6 py-4 font-semibold truncate-product w-2/5 text-gray-900">${product.qty}</td>
+                    <td class="centered qty_header px-6 py-4 font-semibold truncate-product w-2/5 text-gray-900">${product.price}</td>
+                    <td class="centered px-6 py-4 font-semibold truncate-product w-2/5 text-gray-900">${product.amount}</td>
+                </tr> 
+      `
+      receipt_items.innerHTML += row
+      });
+
+     
+    
+     
+  //console.log(receipt_data.id)
+/*
+      receipt.forEach(product => {
+          const listItem = document.createElement('li');
+          listItem.classList.add('inline-flex', 'items-center', 'gap-x-2', 'py-3', 'px-4', 'text-sm', 'border', 'text-gray-800', '-mt-px', 'first:rounded-t-lg', 'first:mt-0', 'last:rounded-b-lg');
+
+          const listItemContent = `
+              <div class="flex items-center justify-between w-full">
+                  <div class="flex flex-col justify-between">
+                      <div class="font-medium truncate w-52 text-gray-800">${product.name}</div>
+                      <div class="flex items-center">
+                          <span class="text-xs uppercase mr-2">Qty: ${product.qty}</span>
+                          <span class="text-xs uppercase">Cost: ${product.price}</span>
+                      </div>
+                  </div>
+                  <div class="flex flex-col justify-between items-end">
+                      <span class="text-xs uppercase">Total</span>
+                      <span class="font-medium text-gray-800">${calculateTotal(product.qty, product.price)}</span>
+                  </div>
+              </div>
+          `;
+
+          listItem.innerHTML = listItemContent;
+          receipt_items.appendChild(listItem);
+      });
+  }
+
+  function calculateTotal(quantity, price){
+      const numericPrice = parseFloat(price.replace('₹', ''));
+      return `₹${(quantity * numericPrice).toFixed(2)}`;*/
+  }
+
+  function update_receipt(){
+
+      generate_receipt_items();
+
+      const store = document.getElementById('store');
+      const receipt_id = document.getElementById('receipt_id');
+      const subtotal = document.getElementById('subtotal');
+      const gst = document.getElementById('gst');
+      const discount_value = document.getElementById('discount_value');
+      const total = document.getElementById('total');
+
+      store.innerHTML = received_data.store_name;
+      receipt_id.innerHTML = 'Receipt #' + received_data.receipt_id;
+      subtotal.innerHTML = '₹' + parseFloat(received_data.subtotal).toFixed(2);
+      gst.innerHTML = '₹' + parseFloat(received_data.gst).toFixed(2);
+      discount_value.innerHTML = '₹' + parseFloat(received_data.discount).toFixed(2);
+      total.innerHTML = '₹' + parseFloat(received_data.total).toFixed(2);
+      
+      background_gray.classList.add('hidden');
+      spinner.classList.add('hidden');
+  }
+
+  function connect(){
+      connect_button.classList.add('hidden');
+      spinner.classList.remove('hidden');
+      setupPeerConnection(connection_id);
+  }
+
+</script>

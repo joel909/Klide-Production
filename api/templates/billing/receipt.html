@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include 'header.html' %}
+  {% include '/billing/navbar.html' %}
+  <style>
+    .rotate_svg {
+      transform: rotate(180deg);
+      transition: transform 0.3s ease;
+    }
+    .unrotate_svg {
+      transform: rotate(0deg);
+      transition: transform 0.3s ease;
+    }
+  </style>
+  <body>
+
+      <section id="default_view">
+        <div class="grid grid-cols-2 w-full p-5">
+          <div class="flex justify-center">
+            <div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 mx-auto">
+              <div class="bg-white rounded-xl shadow border p-4 sm:p-7">
+                <div class="mb-8">
+                  <h2 class="text-xl font-bold text-gray-800">Receipt Details</h2>
+                  <p class="text-sm text-gray-600">Details for your selected receipt are listed below.</p>
+                </div>
+            
+                <div>
+                  <div class="grid sm:grid-cols-12 gap-2 sm:gap-6">
+
+                    <div class="sm:col-span-3">
+                      <label for="details_receiptId" class="inline-block text-sm text-gray-800 mt-2.5">Receipt Id</label>
+                    </div>
+                    
+                    <div class="sm:col-span-9">
+                      <input id="details_receiptId" name="details_receiptId" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" readonly>
+                    </div>
+                    
+                    <div class="sm:col-span-3">
+                      <label for="details_customerNumber" class="inline-block text-sm text-gray-800 mt-2.5">Customer Number</label>
+                    </div>
+                    
+                    <div class="sm:col-span-9">
+                      <input id="details_customerNumber" name="details_customerNumber" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" readonly>
+                    </div>
+                    
+                    <div class="sm:col-span-3">
+                      <label for="details_gstSummary" class="inline-block text-sm text-gray-800 mt-2.5">GST Summary</label>
+                    </div>
+                    
+                    <div class="sm:col-span-9">
+                      <ul class="mt-3 flex flex-col" id="details_gstSummary"></ul>
+                    </div>
+
+                  </div>
+            
+                  <div class="mt-5 flex justify-end gap-x-2">
+                    <a id="editButton" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50" href="#">
+                      <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 17.25V21h3.75L17.2 9.8l-3.75-3.75L3 17.25z"/>
+                        <path d="M20.71 7.29a1 1 0 0 0 0-1.41l-2.58-2.58a1 1 0 0 0-1.41 0L15.5 5.5l3 3 1.21-1.21z"/>
+                      </svg>
+                      Edit
+                    </a>
+                    <a id="printButton" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none" href="#">
+                      <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect width="12" height="8" x="6" y="14"/></svg>
+                      Print
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>            
+          </div>
+          <div class="flex justify-center">
+            <div id="receipt" class="max-w-lg">
+              <div class="relative flex flex-col bg-white shadow-lg rounded-xl pointer-events-auto">
+                <div class="relative overflow-hidden min-h-32 bg-gradient-to-r from-green-300 to-green-500 text-center rounded-t-xl">
+                  <figure class="absolute inset-x-0 bottom-0 -mb-px">
+                    <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1920 100.1">
+                      <path fill="currentColor" class="fill-white" d="M0,0c0,0,934.4,93.4,1920,0v100.1H0L0,0z"></path>
+                    </svg>
+                  </figure>
+                </div>
+          
+                <div class="relative z-10 -mt-12">
+                  <span class="mx-auto flex justify-center items-center size-[62px] rounded-xl w-28 p-2 pr-3 border border-gray-200 bg-white text-gray-700 shadow-sm">
+                    <img src="/static/images/logo-cropped.jpeg">
+                  </span>
+                </div>
+          
+                <div class="p-4 sm:p-7 overflow-y-auto">
+                  <div class="text-center">
+                    <h3 id="receipt_storeName" class="text-lg font-semibold text-gray-800"></h3>
+                    <p id="receipt_receiptId" class="text-sm text-gray-500"></p>
+                  </div>
+          
+                  <div class="mt-5 sm:mt-10 grid grid-cols-2 sm:grid-cols-3 gap-5">
+                    <div>
+                      <span class="block text-xs uppercase text-gray-500">Amount paid:</span>
+                      <span id="receipt_receiptTotal" class="block text-sm font-medium text-gray-800"></span>
+                    </div>
+          
+                    <div>
+                      <span class="block text-xs uppercase text-gray-500">Date paid:</span>
+                      <span id="receipt_date" class="block text-sm font-medium text-gray-800"></span>
+                    </div>
+          
+                    <div>
+                      <span class="block text-xs uppercase text-gray-500">Payment method:</span>
+                      <div id="receipt_paymentMethods" class="flex items-center gap-x-2">
+                        <span class="block text-sm font-medium text-gray-800"></span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mt-5 sm:mt-10">
+                    <h4 class="text-xs font-semibold uppercase text-gray-800">Receipt Items</h4>
+                    <ul class="mt-3 flex flex-col" id="receipt_receiptData"></ul>
+                  </div>
+          
+                  <div class="mt-5 sm:mt-10">
+                    <h4 class="text-xs font-semibold uppercase text-gray-800">Summary</h4>
+          
+                    <ul id="receipt_taxAnalysisSummary" class="mt-3 flex flex-col">
+                      <li id="totalTax" onclick="toggleTotalTax()" class="inline-flex cursor-pointer items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+                        <div class="flex items-center justify-between w-full">
+                          <span class="text-xs uppercase">Taxes</span>
+                          <span id="receipt_totalTax" class="flex items-center gap-3"></span>
+                        </div>
+                      </li>
+                      <div id="totalTax_parent" class="hidden flex flex-col"></div>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="print_view">
+        
+      </section>
+
+  </body>
+</html>
+<script>
+
+  var data = {{ receipt_data|tojson|safe }};
+
+  data.gst_summary = JSON.parse(data.gst_summary);
+  data.receipt_data = data.receipt_data.map(item => {
+    item.taxes = JSON.parse(item.taxes);
+    return item;
+  });
+
+  const receipt = document.getElementById('receipt');
+  const storeName_element = document.getElementById('receipt_storeName');
+  const receiptId_element = document.getElementById('receipt_receiptId');
+  const receiptTotal_element = document.getElementById('receipt_receiptTotal');
+  const date_element = document.getElementById('receipt_date');
+  const paymentMethods_element = document.getElementById('receipt_paymentMethods');
+  const receiptData_element = document.getElementById('receipt_receiptData');
+  const taxAnalysisSummary_element = document.getElementById('receipt_taxAnalysisSummary');
+  const totalTax_element = document.getElementById('totalTax');
+  const totalTax_parent_element = document.getElementById('totalTax_parent');
+  const receiptTotalTax_element = document.getElementById('receipt_totalTax');
+  const editButton_element = document.getElementById('editButton');
+  const printButton_element = document.getElementById('printButton');
+  const details_receiptId_element = document.getElementById('details_receiptId');
+  const details_customerNumber_element = document.getElementById('details_customerNumber');
+  const details_gstSummary_element = document.getElementById('details_gstSummary');
+
+  storeName_element.textContent = data.store_name;
+  receiptId_element.textContent = `#${data.id}`;
+  receiptTotal_element.textContent = `₹${data.receipt_total}`;
+  date_element.textContent = data.date;
+
+  data.receipt_data.forEach(item => {
+    totalCost = item.price.slice(1)*item.qty;
+    console.log(totalCost);
+    const li = document.createElement('li');
+    li.classList.add('inline-flex', 'items-center', 'gap-x-2', 'py-3', 'px-4', 'text-sm', 'border', 'text-gray-800', '-mt-px', 'first:rounded-t-lg', 'first:mt-0', 'last:rounded-b-lg');
+    li.innerHTML = `
+      <div class="flex items-center justify-between w-full">
+        <div class="flex flex-col justify-between">
+            <div class="font-medium truncate w-52 text-gray-800">${item.name}</div>
+            <div class="flex items-center">
+                <span class="text-xs uppercase mr-2">Qty: ${item.qty}</span>
+                <span class="text-xs uppercase">Cost: ${item.price}</span>
+            </div>
+        </div>
+        <div class="flex flex-col justify-between items-end">
+            <span class="text-xs uppercase">Total</span>
+            <span class="font-medium text-gray-800">₹${totalCost}</span>
+        </div>
+      </div>`;
+    receiptData_element.appendChild(li);
+  });
+  
+  const taxAnalysisSummary_list = Object.keys(data.tax_analysis_summary).map(key => {
+    return {
+      name: key,
+      amount: data.tax_analysis_summary[key]
+    };
+  });
+
+  var totalTax_amount = 0;
+  taxAnalysisSummary_list.forEach(item => {
+    totalTax_amount += item.amount;
+    const li = document.createElement('li');
+    li.classList.add('inline-flex', 'items-center', 'gap-x-2', 'py-3', 'px-4', 'text-sm', 'border', 'text-gray-800', '-mt-px', 'first:rounded-t-lg', 'first:mt-0', 'last:rounded-b-lg');
+    li.innerHTML = `
+      <div class="flex items-center justify-between w-full">
+        <span class="text-xs uppercase">${item.name}</span>
+        <span>₹${item.amount}</span>
+      </div>`;
+      totalTax_parent_element.appendChild(li);
+  });
+
+  receiptTotalTax_element.innerHTML = `₹${totalTax_amount} <svg id="receipt_totalTaxButton" class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>`;
+  const amountPaidElement = document.createElement('li');
+  amountPaidElement.className = "inline-flex items-center gap-x-2 py-3 px-4 text-sm font-semibold bg-gray-50 border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg";
+  amountPaidElement.innerHTML = `<div class="flex items-center justify-between w-full">
+                                  <span class="text-xs uppercase">Amount Paid</span>
+                                  <span>₹${data.receipt_total}</span>
+                                </div>`;
+  taxAnalysisSummary_element.appendChild(amountPaidElement);
+
+  const receiptTotalTaxButton_element = document.getElementById('receipt_totalTaxButton');
+
+  function toggleTotalTax() {
+    if (totalTax_parent_element.classList.contains('hidden')) {
+      receiptTotalTaxButton_element.classList.remove('unrotate_svg');
+      receiptTotalTaxButton_element.classList.add('rotate_svg');
+      totalTax_parent_element.classList.remove('hidden');
+    } else {
+      receiptTotalTaxButton_element.classList.remove('rotate_svg');
+      receiptTotalTaxButton_element.classList.add('unrotate_svg');
+      totalTax_parent_element.classList.add('hidden');
+    }
+  }
+
+  const paymentMethods_value = data.payment_methods.join(', ');
+  paymentMethods_element.innerHTML = `<span class="text-sm font-medium uppercase">${paymentMethods_value}</span>`;
+
+  details_receiptId_element.value = data.id;
+  details_customerNumber_element.value = data.customer_number;
+
+  Object.values(data.gst_summary).forEach((item, index) => {
+  console.log(item);
+  const li = document.createElement('li');
+  li.id = `gstSummary_${index}`;
+  li.classList.add('cursor-pointer', 'items-center', 'gap-x-2', 'py-3', 'px-4', 'text-sm', 'border', 'text-gray-800', '-mt-px', 'first:rounded-t-lg', 'first:mt-0', 'last:rounded-b-lg');
+  li.onclick = () => toggleDetails(index);
+
+  const productName = data.receipt_data[index]?.name || 'Unknown Product';
+  const productPrice = data.receipt_data[index]?.price || '0.00';
+  const productQty = data.receipt_data[index]?.qty || 0;
+  const totalProductPrice = (parseFloat(productPrice.slice(1)) * productQty).toFixed(2);
+  const productPriceExclTaxes = data.receipt_data[index]?.product_price_excl_taxes || '0.00';
+  const productTaxValue = data.receipt_data[index]?.product_tax_value.toFixed(2) || '0.00';
+
+  let taxesHTML = '';
+  if (item && Object.keys(item).length > 0) {
+    Object.entries(item).forEach(([taxName, taxValue]) => {
+        let displayValue = taxValue + '%'; 
+        if (taxName === 'taxable_value') {
+          taxName = 'Taxable Value';
+          displayValue = `₹${taxValue}`; 
+        }
+        taxesHTML += `
+          <li class="items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+            <div class="flex items-center justify-between w-full">
+              <span class="text-xs uppercase">${taxName}</span>
+              <span>${displayValue}</span>
+            </div>
+          </li>`;
+      });
+    } else {
+      taxesHTML = `
+        <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+          <div class="flex items-center justify-between w-full">
+            <span class="text-xs uppercase">No taxes applied</span>
+          </div>
+        </li>`;
+    }
+
+    li.innerHTML = `
+      <div class="w-full flex items-center justify-between w-full">
+        <span class="text-xs uppercase">${productName}</span>
+        <span id="productDetailsButton_${index}" class="flex items-center gap-3">
+          ₹${totalProductPrice}
+          <svg id="productTax_${index}" class="size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 9 6 6 6-6"></path>
+          </svg>
+        </span>
+      </div>
+      <div id="details_${index}" class="hidden flex flex-col mt-5">
+        <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+          <div class="flex items-center justify-between w-full">
+            <span class="text-xs uppercase">Price:</span>
+            <span>${productPrice}</span>
+          </div>
+        </li>
+        <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+          <div class="flex items-center justify-between w-full">
+            <span class="text-xs uppercase">Excl. Taxes:</span>
+            <span>₹${productPriceExclTaxes}</span>
+          </div>
+        </li>
+        <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+          <div class="flex items-center justify-between w-full">
+            <span class="text-xs uppercase">Tax Value:</span>
+            <span>₹${productTaxValue}</span>
+          </div>
+        </li>
+        <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+          <div class="flex items-center justify-between w-full">
+            <span class="text-xs uppercase">Quantity:</span>
+            <span>${productQty}</span>
+          </div>
+        </li>
+        ${taxesHTML}
+      </div>
+    `;
+
+    details_gstSummary_element.appendChild(li);
+  });
+
+  function toggleDetails(index) {
+    const details = document.getElementById(`details_${index}`);
+    details.classList.toggle('hidden');
+    const icon = document.getElementById(`productTax_${index}`);
+    if (icon.classList.contains('rotate_svg')) {
+      icon.classList.remove('rotate_svg');
+      icon.classList.add('unrotate_svg');
+    } else {
+      icon.classList.add('rotate_svg');
+      icon.classList.remove('unrotate_svg');
+    }
+  }
+
+</script>

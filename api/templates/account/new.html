@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    {% include 'header.html' %}
+
+    <body>
+      <section id="account_creation_failed_msg" class="hidden flex items-center justify-center min-h-screen">
+        <div class="sm:max-w-lg sm:w-full m-3">
+          <div class="relative flex flex-col bg-white shadow-lg rounded-xl">
+            <div class="p-4 sm:p-10 text-center overflow-y-auto">
+              <span class="mb-4 inline-flex justify-center items-center size-[46px] rounded-full border-4 border-red-50 bg-red-100 text-red-500">
+                <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/>
+                </svg>
+              </span>
+              <h3 class="mb-2 text-xl font-bold text-gray-800">
+                Account creation failed!
+              </h3>
+              <p class="text-gray-500">
+                Please try again or contact support if the problem persists.
+              </p>
+              <div class="mt-6 flex justify-center gap-x-4">
+                <div id="account_creation_failed_redirect_btn" class="py-2 px-3 inline-flex cursor-disabled items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="account_creation_success_msg" class="hidden flex items-center justify-center min-h-screen">
+        <div class="sm:max-w-lg sm:w-full m-3">
+          <div class="relative flex flex-col bg-white shadow-lg rounded-xl">
+            <div class="p-4 sm:p-10 text-center overflow-y-auto">
+              <span class="mb-4 inline-flex justify-center items-center size-[46px] rounded-full border-4 border-green-50 bg-green-100 text-green-500">
+                <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                  <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/>
+                </svg>
+              </span>
+              <h3 class="mb-2 text-xl font-bold text-gray-800">
+                Account successfully created!
+              </h3>
+              <p class="text-gray-500">
+                You will be notified by email of the account creation.
+              </p>
+              <div class="mt-6 flex justify-center gap-x-4">
+                <div id="account_creation_redirect_btn" class="py-2 px-3 inline-flex cursor-disabled items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+        <section id="plan_overview" class="flex flex-col justify-center items-center min-h-screen py-8">
+            <img class="h-16" src="/static/images/logo-cropped.jpeg" alt="Logo">
+            <div class="mt-10 max-w-xl w-full">
+                <div class="shadow-xl shadow-gray-200 p-5 relative z-10 bg-white border rounded-xl md:p-10">
+                  <h3 class="text-xl font-bold text-gray-800">Beta Testing</h3>
+                  <div class="text-sm text-gray-500">For growing businesses.</div>              
+                  <div class="mt-5">
+                    <span class="text-6xl font-bold text-gray-800">₹0</span>
+                    <span class="ms-3 text-gray-500">INR / monthly</span>
+                  </div>
+              
+                  <div class="mt-5 grid sm:grid-cols-2 gap-y-2 py-4 first:pt-0 last:pb-0 sm:gap-x-6 sm:gap-y-0">
+                    <ul class="space-y-2 text-sm sm:text-base">
+                      <li class="flex gap-x-3">
+                        <span class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-blue-50 text-blue-600">
+                          <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                          </svg>
+                        </span>
+                        <span class="text-gray-800">Multiple accounts</span>
+                      </li>
+              
+                      <li class="flex gap-x-3">
+                        <span class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-blue-50 text-blue-600">
+                          <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                          </svg>
+                        </span>
+                        <span class="text-gray-800">Collect data</span>
+                      </li>
+              
+                      <li class="flex gap-x-3">
+                        <span class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-blue-50 text-blue-600">
+                          <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                          </svg>
+                        </span>
+                        <span class="text-gray-800">Code extensibility</span>
+                      </li>
+                    </ul>
+              
+                    <ul class="space-y-2 text-sm sm:text-base">
+                      <li class="flex gap-x-3">
+                        <span class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-blue-50 text-blue-600">
+                          <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                          </svg>
+                        </span>
+                        <span class="text-gray-800">Custom reports</span>
+                      </li>
+              
+                      <li class="flex gap-x-3">
+                        <span class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-blue-50 text-blue-600">
+                          <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                          </svg>
+                        </span>
+                        <span class="text-gray-800">Product support</span>
+                      </li>
+              
+                      <li class="flex gap-x-3">
+                        <span class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-blue-50 text-blue-600">
+                          <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                          </svg>
+                        </span>
+                        <span class="text-gray-800">Activity reporting</span>
+                      </li>
+                    </ul>
+                  </div>
+              
+                  <div class="mt-5 grid grid-cols-2 gap-x-4 py-4 first:pt-0 last:pb-0">
+                    <div>
+                      <p class="text-sm text-gray-500">Cancel anytime.</p>
+                      <p class="text-sm text-gray-500">No charges for beta.</p>
+                    </div>
+              
+                    <div class="flex justify-end">
+                        <button onclick="account_setup_init()" type="button" class="py-3 px-4 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">Create your account now!</button>                    </div>
+                  </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="account_setup" class="hidden mt-10 p-5">
+          
+          <section>
+            <div class="flex justify-center">
+                <div class="max-w-2xl flex flex-col justify-center">
+                  <ul class="flex justify-center flex-row gap-x-2">
+                    <li id="stepper_step_1" class="flex items-center gap-x-2 shrink basis-0 flex-1 group">
+                      <div class="min-w-7 min-h-7 inline-flex justify-center items-center text-xs align-middle">
+                        <span class="size-7 flex justify-center items-center shrink-0 bg-white border border-gray-200 font-medium text-gray-800 rounded-full">
+                          1
+                        </span>
+                        <span class="ms-2 block text-sm font-medium text-gray-800">
+                          Merchant Details
+                        </span>
+                      </div>
+                      <div style="width: 20vh;" class="h-px flex-1 bg-gray-200 group-last:hidden"></div>
+                    </li>
+          
+                    <li id="stepper_step_2" class="flex items-center gap-x-2 shrink basis-0 flex-1 group">
+                      <div class="min-w-7 min-h-7 inline-flex justify-center items-center text-xs align-middle">
+                        <span class="size-7 flex justify-center items-center shrink-0 bg-white border border-gray-200 font-medium text-gray-800 rounded-full">
+                          2
+                        </span>
+                        <span class="ms-2 block text-sm font-medium text-gray-800">
+                          Store Details
+                        </span>
+                      </div>
+                      <div style="width: 20vh;" class="h-px flex-1 bg-gray-200 group-last:hidden"></div>
+                    </li>
+          
+                    <li id="stepper_step_3" class="flex items-center gap-x-2 shrink basis-0 flex-1 group">
+                      <div class="min-w-7 min-h-7 inline-flex justify-center items-center text-xs align-middle">
+                        <span class="size-7 flex justify-center items-center shrink-0 bg-white border border-gray-200 font-medium text-gray-800 rounded-full">
+                          3
+                        </span>
+                        <span class="ms-2 block text-sm font-medium text-gray-800">
+                          Add Devices
+                        </span>
+                      </div>
+                      <div style="width: 20vh;" class="h-px flex-1 bg-gray-200 group-last:hidden"></div>
+                    </li>
+          
+                    <li id="stepper_step_4" class="flex items-center gap-x-2 shrink basis-0 flex-1 group">
+                      <div class="min-w-7 min-h-7 inline-flex justify-center items-center text-xs align-middle">
+                        <span class="size-7 flex justify-center items-center shrink-0 bg-white border border-gray-200 font-medium text-gray-800 rounded-full">
+                          4
+                        </span>
+                        <span class="ms-2 block text-sm font-medium text-gray-800">
+                          Employees
+                        </span>
+                      </div>
+                      <div style="width: 20vh;" class="h-px flex-1 bg-gray-200 group-last:hidden"></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+          </section>
+
+          <section id="stepper_1" class="max-w-5xl mx-auto flex justify-center">
+            <div class="w-full rounded-xl">
+              <div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 mx-auto">
+                <div class="bg-white rounded-xl shadow p-4 sm:p-7">
+                  <div class="mb-8">
+                    <h2 class="text-xl font-bold text-gray-800">
+                      Merchant Details
+                    </h2>
+                    <p class="text-sm text-gray-600">
+                      Provide and update your business information, contact details, and preferences.
+                    </p>
+                  </div>
+          
+                  <div>
+                    <div class="grid sm:grid-cols-12 gap-2 sm:gap-6">
+                      <div class="sm:col-span-3">
+                        <label for="merchantDetails_full_name" class="inline-block text-sm text-gray-800 mt-2.5">
+                          Full name
+                        </label>
+                      </div>
+          
+                      <div class="sm:col-span-9">
+                        <input id="merchantDetails_full_name" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm -mt-px -ms-px rounded-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" disabled>
+                      </div>
+          
+                      <div class="sm:col-span-3">
+                        <label for="merchantDetails_email" class="inline-block text-sm text-gray-800 mt-2.5">
+                          Email
+                        </label>
+                      </div>
+          
+                      <div class="sm:col-span-9">
+                        <input id="merchantDetails_email" type="email" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" disabled>
+                      </div>
+          
+                      <div class="sm:col-span-3">
+                        <div class="inline-block">
+                          <label for="merchantDetails_phone" class="inline-block text-sm text-gray-800 mt-2.5">
+                            Store Contact Number
+                          </label>
+                        </div>
+                      </div>
+          
+                      <div class="sm:col-span-9">
+                        <div class="sm:flex">
+                          <input id="merchantDetails_phone" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm -mt-px -ms-px rounded-lg text-sm relative focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Phone Number">
+                        </div>
+                      </div>
+          
+                      <div class="sm:col-span-3">
+                        <label for="merchantDetails_store_name" class="inline-block text-sm text-gray-800 mt-2.5">
+                          Store Name
+                        </label>
+                      </div>
+          
+                      <div class="sm:col-span-9">
+                        <input id="merchantDetails_store_name" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Store Name">
+                      </div>
+                    </div>
+          
+                    <div class="mt-5 flex justify-end gap-x-2">
+                      <button type="button" onclick="stepper_completed(stepper_step_1)" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                        Save changes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="stepper_2" class="hidden max-w-5xl mx-auto flex justify-center">
+            <div class="w-full rounded-xl">
+              <div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 mx-auto">
+                <div class="bg-white rounded-xl shadow p-4 sm:p-7">
+                  <div class="mb-8">
+                    <h2 class="text-xl font-bold text-gray-800">
+                      Store Details
+                    </h2>
+                    <p class="text-sm text-gray-600">
+                      Provide and update your store's operational details and address.
+                    </p>
+                  </div>
+          
+                  <div>
+                    <div class="grid sm:grid-cols-12 gap-2 sm:gap-6">
+                      <div class="sm:col-span-3">
+                        <label for="storeDetails_gstin" class="inline-block text-sm text-gray-800 mt-2.5">
+                          GSTIN Number
+                        </label>
+                      </div>
+          
+                      <div class="sm:col-span-9">
+                        <input id="storeDetails_gstin" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="GSTIN">
+                      </div>
+          
+                      <div class="sm:col-span-3">
+                        <label for="storeDetails_open_from" class="inline-block text-sm text-gray-800 mt-2.5">
+                          Open From
+                        </label>
+                      </div>
+          
+                      <div class="sm:col-span-9">
+                        <input id="storeDetails_open_from" type="time" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="09:00">
+                      </div>
+          
+                      <div class="sm:col-span-3">
+                        <label for="storeDetails_open_to" class="inline-block text-sm text-gray-800 mt-2.5">
+                          Open To
+                        </label>
+                      </div>
+          
+                      <div class="sm:col-span-9">
+                        <input id="storeDetails_open_to" type="time" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="18:00">
+                      </div>
+          
+                      <div class="sm:col-span-3">
+                        <label for="storeDetails_address" class="inline-block text-sm text-gray-800 mt-2.5">
+                          Address
+                        </label>
+                      </div>
+          
+                      <div class="sm:col-span-9">
+                        <input id="storeDetails_address" type="text" class="py-2 px-3 pe-11 block w-full border-gray-200 shadow-sm text-sm rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" placeholder="Store Address">
+                      </div>
+                    </div>
+          
+                    <div class="mt-5 flex justify-end gap-x-2">
+                      <button type="button" onclick="stepper_completed(stepper_step_2)" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
+                        Save changes
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="stepper_3" class="hidden max-w-5xl mx-auto flex justify-center">
+            <div class="w-full rounded-xl">
+              <div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 mx-auto">
+                <div class="bg-white rounded-xl shadow p-4 sm:p-7">
+                  <div class="mb-8">
+                    <h2 class="text-xl font-bold text-gray-800">
+                      Manage Accounts
+                    </h2>
+                    <p class="text-sm text-gray-600">
+                      Add and manage your device accounts and set their passwords.
+                    </p>
+                  </div>
+          
+                  <div id="accounts-container">
+                    <div class="account-item grid sm:grid-cols-12 gap-2 sm:gap-6 mb-4">
+                      <div class="sm:col-span-3">
+                        <label for="account_device_id_000001" class="inline-block text-sm text-gray-800 mt-2.5">
+                          Device 1
+                        </label>
+                      </div>
+          
+                      <div class="sm:col-span-9">
+                        <input id="account_device_id_000001" type="text" value="000001" class="py-2 px-3 block w-full border-gray-200 shadow-sm text-sm rounded-lg" disabled>
+                      </div>
+          
+                      <div class="sm:col-span-3">
+                        <label for="account_password_000001" class="inline-block text-sm text-gray-800 mt-2.5">
+                          Password
+                        </label>
+                      </div>
+          
+                      <div class="sm:col-span-9">
+                        <input id="account_password_000001" type="password" class="py-2 px-3 block w-full border-gray-200 shadow-sm text-sm rounded-lg" placeholder="Enter password">
+                      </div>
+                    </div>
+                  </div>
+          
+                  <div class="mt-5 flex justify-end gap-x-2">
+                    <button type="button" id="add-account-button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50">
+                      Add Account
+                    </button>
+                    <button type="button" onclick="stepper_completed(stepper_step_3)" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700">
+                      Save changes
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          
+          <section id="stepper_4" class="hidden max-w-5xl mx-auto flex justify-center">
+            <div class="w-full rounded-xl">
+              <div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 mx-auto">
+                <div class="bg-white rounded-xl shadow p-4 sm:p-7">
+                  <div class="mb-8">
+                    <h2 class="text-xl font-bold text-gray-800">
+                      Manage Employees
+                    </h2>
+                    <p class="text-sm text-gray-600">
+                      Add and manage your employees.
+                    </p>
+                  </div>
+
+                  <div id="employees-container">
+                    <div class="employee-item grid sm:grid-cols-12 gap-2 sm:gap-6 mb-4">
+                      <div class="sm:col-span-3">
+                        <label for="employee_name_000001" class="inline-block text-sm text-gray-800 mt-2.5">
+                          Employee 1
+                        </label>
+                      </div>
+
+                      <div class="sm:col-span-9">
+                        <input id="employee_name_000001" type="text" class="py-2 px-3 block w-full border-gray-200 shadow-sm text-sm rounded-lg" placeholder="Enter name">
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mt-5 flex justify-end gap-x-2">
+                    <button type="button" id="add-employee-button" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50">
+                      Add Employee
+                    </button>
+                    <button type="button" onclick="stepper_completed(stepper_step_4)" class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700">
+                      Save changes
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </section>
+    </body>
+</html>
+<script>
+    //document.getElementById('device1').value = generateRandomSixDigitNumber();
+    let device_id_list = []
+    const default_device_id_input_box = document.getElementById('account_device_id_000001')
+    const default_device_id = generateRandomSixDigitNumber().toString()
+    default_device_id_input_box.value = default_device_id
+    const merchant_id = "{{merchant_id | safe}}"
+    const merchant_name = "{{merchant_name | safe}}"
+    const merchant_email = "{{merchant_email | safe}}"
+    merchant_name_input = document.getElementById('merchantDetails_full_name')
+    merchant_email_input = document.getElementById('merchantDetails_email')
+    console.log("merchant ID",merchant_id)
+    merchant_email_input.value = merchant_email
+    console.log("merchant name ",merchant_name)
+    merchant_name_input.value = merchant_name 
+
+
+    const plan_overview = document.getElementById('plan_overview');
+    const account_setup = document.getElementById('account_setup');
+
+    function account_setup_init() {
+        plan_overview.classList.add('hidden');
+        account_setup.classList.remove('hidden');
+    }
+
+    const steps = [
+        { step: document.getElementById('stepper_step_1'), section: document.getElementById('stepper_1') },
+        { step: document.getElementById('stepper_step_2'), section: document.getElementById('stepper_2') },
+        { step: document.getElementById('stepper_step_3'), section: document.getElementById('stepper_3') },
+        { step: document.getElementById('stepper_step_4'), section: document.getElementById('stepper_4') }
+    ];
+
+    function input_validation(stepper){
+        let valid = true;
+        const stepperSection = steps.find(item => item.step === stepper).section.id;
+
+        const inputs = document.getElementById(stepperSection).querySelectorAll('input');
+        inputs.forEach(input => {
+            if (input.value.trim() === '') {
+                console.log('empty');
+                input.classList.add('border-red-500');
+                valid = false;
+            } else {
+                console.log('not empty');
+                input.classList.remove('border-red-500');
+            }
+        });
+
+        return valid;
+    }
+
+    var allInputData;
+    function getAllInputData() {
+        const data = {};
+
+        data['merchantDetails_fullName'] = document.querySelector('#merchantDetails_full_name')?.value.trim() || 'N/A';
+        data['merchantDetails_email'] = document.querySelector('#merchantDetails_email')?.value.trim() || 'N/A';
+        data['merchantDetails_phone'] = document.querySelector('#merchantDetails_phone')?.value.trim() || 'N/A';
+        data['merchantDetails_storeName'] = document.querySelector('#merchantDetails_store_name')?.value.trim() || 'N/A';
+
+        data['storeDetails_gstin'] = document.querySelector('#storeDetails_gstin')?.value.trim() || 'N/A';
+        data['storeDetails_openFrom'] = document.querySelector('#storeDetails_open_from')?.value.trim() || 'N/A';
+        data['storeDetails_openTo'] = document.querySelector('#storeDetails_open_to')?.value.trim() || 'N/A';
+        data['storeDetails_address'] = document.querySelector('#storeDetails_address')?.value.trim() || 'N/A';
+
+        const devices = {};
+        document.querySelectorAll('#accounts-container .account-item').forEach(item => {
+            const deviceId = item.querySelector('input[type="text"]')?.value.trim();
+            const password = item.querySelector('input[type="password"]')?.value.trim();
+            if (deviceId) {
+                devices[deviceId] = password || 'N/A';
+            }
+        });
+        data['devices'] = devices;
+
+        const employees = [];
+        document.querySelectorAll('#employees-container .employee-item').forEach(item => {
+            const name = item.querySelector('input[type="text"]')?.value.trim();
+            employees.push(name || 'N/A');
+        });
+        data['employees'] = employees;
+
+        return data;
+    }
+
+    function stepper_completed(stepper) {
+        allInputData = getAllInputData();
+        console.log(JSON.stringify(allInputData, null, 2));
+        if (input_validation(stepper) === true) {
+          const stepIndex = steps.findIndex(item => item.step === stepper);
+          if (stepIndex === -1) return;
+
+          const stepName = stepper.querySelector('span.ms-2').textContent.trim();
+          stepper.innerHTML = `<span class="min-w-7 min-h-7 group inline-flex items-center text-xs align-middle">
+                                  <span class="size-7 flex justify-center items-center shrink-0 font-medium text-white rounded-full bg-blue-600 group-focus:bg-blue-600">
+                                    <svg class="shrink-0 size-3 block" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                      <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                  </span>
+                                  <span class="ms-2 text-sm font-medium text-gray-800">${stepName}</span>
+                                </span>
+                                <div style="width: 20vh;" class="h-px flex-1 bg-gray-200 ${stepIndex === steps.length - 1 ? 'hidden' : ''}"></div>`;
+
+          if (stepIndex === steps.length - 1) {
+              allInputData = getAllInputData();
+              console.log(JSON.stringify(allInputData, null, 2));
+              console.log(JSON.stringify(allInputData));
+              console.log('All steps completed');
+              console.log(allInputData)
+              steps[stepIndex].section.classList.add('hidden');
+              account_setup.classList.add('hidden');
+              updateStoreDataWithDB()
+          } else {
+              steps[stepIndex].section.classList.add('hidden');
+              steps[stepIndex + 1].section.classList.remove('hidden');
+          }
+        }
+    }
+
+  var device_count = 1;
+  document.getElementById('add-account-button').addEventListener('click', function() {
+    device_count++;
+    var container = document.getElementById('accounts-container');
+    var currentCount = container.getElementsByClassName('account-item').length;
+    var newDeviceId = generateRandomSixDigitNumber().toString()
+
+    var newAccountHtml = `
+      <div class="account-item grid sm:grid-cols-12 gap-2 sm:gap-6 mb-4">
+        <div class="sm:col-span-3">
+          <label for="account_device_id_${newDeviceId}" class="inline-block text-sm text-gray-800 mt-2.5">
+            Device ${device_count}
+          </label>
+        </div>
+
+        <div class="sm:col-span-9">
+          <input id="account_device_id_${newDeviceId}" type="text" value="${newDeviceId}" class="py-2 px-3 block w-full border-gray-200 shadow-sm text-sm rounded-lg" disabled>
+        </div>
+
+        <div class="sm:col-span-3">
+          <label for="account_password_${newDeviceId}" class="inline-block text-sm text-gray-800 mt-2.5">
+            Password
+          </label>
+        </div>
+
+        <div class="sm:col-span-9">
+          <input id="account_password_${newDeviceId}" type="password" class="py-2 px-3 block w-full border-gray-200 shadow-sm text-sm rounded-lg" placeholder="Enter password">
+        </div>
+      </div>
+    `;
+    
+    container.insertAdjacentHTML('beforeend', newAccountHtml);
+  });
+
+  var employee_count = 1;
+  document.getElementById('add-employee-button').addEventListener('click', function() {;
+    employee_count++;
+    var container = document.getElementById('employees-container');
+    var currentCount = container.getElementsByClassName('employee-item').length;
+    var newEmployeeId = ('000000' + (currentCount + 1)).slice(-6);
+
+    var newEmployeeHtml = `
+      <div class="employee-item grid sm:grid-cols-12 gap-2 sm:gap-6 mb-4">
+        <div class="sm:col-span-3">
+          <label for="employee_name_${newEmployeeId}" class="inline-block text-sm text-gray-800 mt-2.5">
+            Employee ${employee_count}
+          </label>
+        </div>
+
+        <div class="sm:col-span-9">
+          <input id="employee_name_${newEmployeeId}" type="text" class="py-2 px-3 block w-full border-gray-200 shadow-sm text-sm rounded-lg" placeholder="Enter name">
+        </div>
+      </div>
+    `;
+    
+    container.insertAdjacentHTML('beforeend', newEmployeeHtml);
+  });
+  //function to generate random 6 digit number 
+  function generateRandomSixDigitNumber() {
+        const min = 100000;
+        const max = 999999;
+        const random_id = Math.floor(Math.random() * (max - min + 1)) + min;
+        while (device_id_list.includes(random_id)) {
+            random_id = Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        return random_id
+    }
+  //function to make a fetch request to the backend to update the store data
+  async function updateStoreDataWithDB(){
+    formatted_device_list = []
+    //formatting the device liist cuz the backend expects it in a certain format
+    for (const [key, value] of Object.entries(allInputData.devices)) {
+      formatted_device_list.push({device_id: key, password: value})
+    }
+    //console.log("Formatted device list", formatted_device_list)
+    //the final data to be sent to the backend
+    data = {
+            merchant_id: merchant_id,
+            merchant_name: allInputData.merchantDetails_fullName,
+            merchant_number: allInputData.merchantDetails_phone,
+            merchant_email: allInputData.merchantDetails_email,
+            store_name: allInputData.merchantDetails_storeName,
+            store_number: allInputData.merchantDetails_phone,
+            open_from: allInputData.storeDetails_openFrom,
+            open_to: allInputData.storeDetails_openTo,
+            location: allInputData.storeDetails_address,
+            devices: formatted_device_list,
+            employees: allInputData.employees
+        
+        }
+    //makeing a fetch(post) request to the backend
+    const response = await fetch('/account/new', {
+        method: 'POST',
+
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      })
+      const responseText = await response.text();
+      account_setup_status = JSON.parse(responseText).status// logs 'OK'
+      console.log("Account Setup Status : "+account_setup_status)
+
+      if (account_setup_status == "success"){
+        account_creation_success();
+      } else {
+        account_creation_failed();
+      }
+
+  }
+
+  const account_creation_redirect_btn = document.getElementById('account_creation_redirect_btn');
+  const account_creation_success_msg = document.getElementById('account_creation_success_msg');
+
+  
+
+  function account_creation_success() {
+    account_creation_success_msg.classList.remove('hidden');
+    account_creation_redirect_btn.classList.remove('hidden');
+
+    let countdown = 5;
+    account_creation_redirect_btn.textContent = `Redirecting in ${countdown} seconds`;
+
+    const interval = setInterval(() => {
+      countdown--;
+      if (countdown > 0) {
+        account_creation_redirect_btn.textContent = `Redirecting in ${countdown} seconds`;
+      } else {
+        clearInterval(interval);
+        window.location.href = '/account/login';
+      }
+    }, 1000);
+  }
+  const account_creation_failed_redirect_btn = document.getElementById('account_creation_failed_redirect_btn');
+  const account_creation_failed_msg = document.getElementById('account_creation_failed_msg');
+
+  function account_creation_failed() {
+    account_creation_failed_msg.classList.remove('hidden');
+    account_creation_failed_redirect_btn.classList.remove('hidden');
+
+    let countdown = 5;
+    account_creation_failed_redirect_btn.textContent = `Redirecting in ${countdown} seconds`;
+
+    const interval = setInterval(() => {
+      countdown--;
+      if (countdown > 0) {
+        account_creation_failed_redirect_btn.textContent = `Redirecting in ${countdown} seconds`;
+      } else {
+        clearInterval(interval);
+        //window.location.reload();
+      }
+    }, 1000);
+  }
+</script>

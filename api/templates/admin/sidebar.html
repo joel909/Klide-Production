@@ -1,0 +1,143 @@
+<div class="sticky top-0 inset-x-0 z-20 bg-white border-y px-4 sm:px-6 lg:px-8 lg:hidden">
+  <div class="flex items-center py-2">
+
+    <button type="button" class="size-8 flex justify-center items-center gap-x-2 border border-gray-200 text-gray-800 hover:text-gray-500 rounded-lg focus:outline-none focus:text-gray-500 disabled:opacity-50 disabled:pointer-events-none" aria-haspopup="dialog" aria-expanded="false" aria-controls="mobile-sidebar" aria-label="Toggle navigation" mobile-sidebar="#mobile-sidebar">
+      <span class="sr-only">Toggle Navigation</span>
+      <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M15 3v18"/><path d="m8 9 3 3-3 3"/></svg>
+    </button>
+
+    <ol class="ms-3 flex items-center whitespace-nowrap">
+      <li class="flex items-center text-sm text-gray-800">
+        Klide
+        <svg class="shrink-0 mx-3 overflow-visible size-2.5 text-gray-400" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 1L10.6869 7.16086C10.8637 7.35239 10.8637 7.64761 10.6869 7.83914L5 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </li>
+      <li class="text-sm font-semibold text-gray-800 truncate" aria-current="page">
+        Dashboard
+      </li>
+    </ol>
+  </div>
+</div>
+
+<div id="mobile-sidebar" class="hs-overlay  [--auto-close:lg]
+  hs-overlay-open:translate-x-0
+  -translate-x-full transition-all duration-300 transform
+  w-[260px] h-full
+  hidden
+  fixed inset-y-0 start-0 z-[60]
+  bg-white border-e border-gray-200
+  lg:block lg:translate-x-0 lg:end-auto lg:bottom-0
+  " role="dialog" tabindex="-1" aria-label="Mobile Sidebar">
+  <div class="relative flex flex-col h-full max-h-full">
+    <div class="px-6 pt-4">
+      <a class="flex-none rounded-xl text-xl inline-block font-semibold focus:outline-none focus:opacity-80" href="/admin/dashboard" aria-label="Preline">
+        <img class="w-36 -ml-4" src="/static/images/logo-cropped.jpeg">
+      </a>
+    </div>
+
+    <div class="h-full overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:bg-gray-300">
+      <nav class="hs-accordion-group p-3 w-full flex flex-col flex-wrap" data-hs-accordion-always-open>
+        <ul class="flex flex-col space-y-1">
+          <li>
+            <a sidebar_element href="/admin/dashboard">
+              <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              Dashboard
+            </a>
+          </li>
+
+          <li>
+            <a sidebar_element href="/admin/transactions">
+              <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M7 4h10"/></svg>
+              Transactions
+            </a>
+          </li>
+
+          <li class="hs-accordion" id="users-accordion">
+            <a sidebar_element href="/admin/devices">
+              <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="10" height="14" x="3" y="8" rx="2"></rect><path d="M5 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2h-2.4"></path><path d="M8 18h.01"></path></svg>
+              Devices
+            </a>
+          </li>
+
+          <li class="hs-accordion" id="users-accordion">
+            <a sidebar_element href="/admin/customers">
+              <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              Customers
+            </a>
+          </li>
+
+          <li class="hs-accordion" id="users-accordion">
+            <a sidebar_element href="/admin/products">
+              <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"></path><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"></path><path d="m3.3 7 8.7 5 8.7-5"></path><path d="M12 22V12"></path></svg>      
+              Products
+            </a>
+          </li>
+
+          <li>
+            <a sidebar_element href="/admin/settings">
+              <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+              Settings
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="flex-none">
+      <div class="px-6 pt-3 pb-4 flex justify-between items-center">
+        <div class="flex items-center gap-x-2">
+          <div class="flex-shrink-0">
+            <a class="inline-block size-6 rounded-full" href="/admin/profile">
+              <span class="inline-flex -ml-2 -mt-2 items-center justify-center size-8 rounded-full bg-gray-500 text-xs font-semibold text-white leading-none">
+                JD
+              </span>
+            </a>
+          </div>
+          <div class="flex flex-col">
+            <a class="text-sm font-semibold text-gray-800" href="/admin/profile">John Doe</a>
+            <span class="text-xs text-gray-400">Admin</span>
+          </div>
+        </div>
+        <a class="size-8 flex justify-center items-center p-1 rounded-lg text-gray-800 hover:bg-gray-100 focus:outline-none focus:bg-gray-100" aria-label="Logout">
+          <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 16l4-4-4-4"/><path d="M3 12h14"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  
+  document.querySelector('[mobile-sidebar]').addEventListener('click', function() {
+    const sidebar = document.querySelector(this.getAttribute('mobile-sidebar'));
+    sidebar.classList.toggle('-translate-x-full');
+    sidebar.classList.toggle('hidden');
+  });
+
+  const selected_sidebar_class = 'flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-100 text-sm rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100 text-blue-600';
+  const unselected_sidebar_class = 'flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-gray-800 rounded-lg hover:bg-gray-100 focus:outline-none focus:bg-gray-100';
+
+  const sidebarElements = document.querySelectorAll('[sidebar_element]');
+  sidebarElements.forEach(element => {
+      console.log(element.textContent.trim());
+  });
+
+  sidebarElements.forEach(element => {
+    const textContent = element.textContent.trim();
+    if (
+      (window.location.pathname === '/admin/dashboard' && textContent === 'Dashboard') ||
+      (window.location.pathname === '/admin/transactions' && textContent === 'Transactions') ||
+      (window.location.pathname === '/admin/devices' && textContent === 'Devices') ||
+      (window.location.pathname === '/admin/customers' && textContent === 'Customers') ||
+      (window.location.pathname === '/admin/products' && textContent === 'Products') ||
+      (window.location.pathname === '/admin/settings' && textContent === 'Settings')
+    ) {
+      element.classList = selected_sidebar_class;  
+    } else {
+      element.classList = unselected_sidebar_class; 
+    }
+  });
+
+</script>
+

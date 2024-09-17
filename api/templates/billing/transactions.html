@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include '/billing/navbar.html' %}
+  <body>
+    <div id="background_gray" class="hidden fixed z-50 inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div role="status">
+        <svg aria-hidden="true" class="w-8 h-8 text-gray-200 animate-spin fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+          <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+        </svg>
+      </div>
+    </div>
+    <div class="m-5">
+      <div class="relative bg-white shadow-md sm:rounded-lg mb-2 divide-y">
+        <div class="flex flex-col items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
+          <div class="w-full md:w-1/2">
+            <div class="flex items-center">
+              <input type="text" autocomplete="off"  id="search_prefix" disabled class="text-center w-fit p-2 mr-5 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500"/>
+              <div class="relative w-full">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                  <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+                  </svg>
+                </div>
+                <input type="text" autocomplete="off" id="search_input" class="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary-500 focus:border-primary-500" placeholder="Search" required="">
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col items-stretch justify-end flex-shrink-0 w-full space-y-2 md:w-auto md:flex-row md:space-y-0 md:items-center md:space-x-3">
+            <div class="flex space-x-3">
+              <button id="searchReceipt" class="text-white toggle-search-btn bg-white border border-gray-200 py-2 px-4 rounded-md font-medium text-sm text-gray-900"> Search by Receipt ID </button>
+              <button id="searchCustomer" class="text-gray toggle-search-btn bg-white border border-gray-200 py-2 px-4 rounded-md font-medium text-sm text-gray-900"> Search by Customer Number </button>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col items-center justify-between p-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4">
+          <div class="w-full md:w-1/2">
+            <div class="flex items-center">
+              <div class="flex items-center">
+                <div class="relative">
+                  <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                    <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                    </svg>
+                  </div>
+                  <input id="search_date_start" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="dd-mm-yyyy" name="start" type="text" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5" placeholder="Select date start">
+                </div>
+                <div id="date-range-div" class="flex items-center hidden">
+                  <span class="mx-4 text-gray-500">to</span>
+                  <div class="relative">
+                    <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                      <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                      </svg>
+                    </div>
+                    <input id="search_date_end" datepicker datepicker-buttons datepicker-autoselect-today datepicker-format="dd-mm-yyyy" name="end" type="text" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5" placeholder="Select date end">
+                  </div>
+                </div>
+              </div>
+              <div class="flex ml-4">
+                <div class="flex items-center me-4">
+                    <input id="inline-radio" checked type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                    <label for="inline-radio" class="ms-2 text-sm font-medium text-gray-900">Date</label>
+                </div>
+                <div class="flex items-center me-4">
+                    <input id="inline-2-radio" type="radio" value="" name="inline-radio-group" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
+                    <label for="inline-2-radio" class="ms-2 text-sm font-medium text-gray-900">Date Range</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <button id="search_button" type="button" onclick="view_receipts()" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">Search</button>
+          </div>
+        </div>
+      </div>
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table id="receipts_table" class="w-full text-sm text-left rtl:text-right text-gray-500">
+          <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+            <tr>
+              <th scope="col" class="p-4"> Receipt Id </th>
+              <th scope="col" class="p-4"> Customer Number </th>
+              <th scope="col" class="px-6 py-3"> Device Id </th>
+              <th scope="col" class="px-6 py-3"> Date </th>
+              <th scope="col" class="px-6 py-3"> Time </th>
+              <th scope="col" class="px-6 py-3"> Purchase Value </th>
+              <th scope="col" class="px-6 py-3"> Action </th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  const background_gray = document.getElementById('background_gray');
+  const input = document.getElementById('search_input');
+  const merchant_id = findCookie('merchant_id');
+  const device_id = findCookie('device_id');
+  const receipt_ref = findCookie('receipt_ref') + '-';
+  const receipt_toggle = document.getElementById('searchReceipt');
+  const customer_number_toggle = document.getElementById('searchCustomer');
+  const search_date_start = document.getElementById('search_date_start');
+  const search_date_end = document.getElementById('search_date_end');
+  const search_button = document.getElementById('search_button');
+  let search_value = document.getElementById('search_input');
+  const search_date_start_value = search_date_start.value;
+  const search_date_end_value = search_date_end.value;
+  const search_prefix = document.getElementById('search_prefix');
+  var current_search_mode = 'receipt';
+  var recent_receipts;
+  spinner_on()
+  setSearchMode('receipt')
+  view_recent_receipts();
+
+  function spinner_on() {
+      search_init();
+      background_gray.classList.remove('hidden');
+  }
+
+  function spinner_off() {
+      background_gray.classList.add('hidden');
+      search_end();
+  }
+
+  function setSearchMode(mode) {
+      searchMode = mode;
+      if (mode === 'receipt') {
+          current_search_mode = 'receipt';
+          customer_number_toggle.classList.remove('focus:outline-none', 'bg-blue-700', 'text-white');
+          customer_number_toggle.classList.add('text-gray-900');
+          receipt_toggle.classList.add('focus:outline-none', 'bg-blue-700', 'text-white');
+          receipt_toggle.classList.remove('text-gray-900');
+          search_prefix.value = receipt_ref;
+      } else if (mode === 'customer') {
+          current_search_mode = 'customer_number';
+          receipt_toggle.classList.remove('focus:outline-none', 'bg-blue-700', 'text-white');
+          receipt_toggle.classList.add('text-gray-900');
+          customer_number_toggle.classList.add('focus:outline-none', 'bg-blue-700', 'text-white');
+          customer_number_toggle.classList.remove('text-gray-900');
+          search_prefix.value = '+91 ';
+      }
+  }
+
+  receipt_toggle.addEventListener('click', () => {
+      setSearchMode('receipt');
+  });
+
+  customer_number_toggle.addEventListener('click', () => {
+      setSearchMode('customer');
+  });
+
+  async function view_recent_receipts() {
+      spinner_on();
+      get_receipts('recent', '').then(data => {
+          recent_receipts = data;
+          populateTable(recent_receipts);
+          spinner_off();
+      });
+  }
+  function formatTimestamp(timestamp) {
+  const date = new Date(timestamp);
+  return date.toLocaleString(); // Converts to local date and time format
+}
+
+  function populateTable(data) {
+      const tableBody = document.querySelector('#receipts_table tbody');
+      tableBody.innerHTML = '';
+      
+
+      data.forEach((receipt) => {
+          receipt_device_id = split_receipt_id(receipt.id)[1];
+          console.log(receipt)
+          const row = tableBody.insertRow();
+          //console.log(formatTimestamp(receipt.timestamp))
+          
+          row.innerHTML = `
+          <tr class="bg-white border-b hover:bg-gray-50">
+            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+              ${receipt.id}
+            </td>
+            <td class="px-6 py-4">
+              ${receipt.customer_number}
+            </td>
+            <td class="px-6 py-4">
+              ${receipt_device_id}
+            </td>
+            <td class="px-6 py-4">
+              ${receipt.date}
+            </td>
+            <td class="px-6 py-4">
+              ${formatTimestamp(receipt.timestamp).split(",")[1]}
+            </td>
+            <td class="px-6 py-4">
+              ${receipt.total_purchase_value}
+            </td>
+            <td class="px-6 py-4">
+              <a href="/transactions/receipt/${receipt.id}" class="font-medium text-blue-600 hover:underline">View</a>
+            </td>
+          </tr>`;
+      });
+  }
+
+  function search_init() {
+
+      search_button.disabled = true;
+      search_button.innerHTML = `<svg aria-hidden="true" role="status" class="inline w-4 h-4 me-3 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="#E5E7EB"/>
+                                  <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentColor"/>
+                                </svg>
+                                Loading...
+                              `;
+
+  }
+
+  function search_end() {
+
+      search_button.disabled = false;
+      search_button.innerHTML = 'Search';
+
+  }
+
+  function split_receipt_id(input) {
+
+      const regex = /(?:^|-)(\d+)(?=-|$)/g;
+      const matches = input.match(regex);
+      if (matches) {
+          return matches.map(match => match.replace(/-/g, ''));
+      } else {
+          return [];
+      }
+
+  }
+
+  async function get_receipts(type, query) {
+
+      const body = JSON.stringify({
+          type: type,
+          query: query
+      });
+
+      try {
+
+          const response = await fetch('/get/receipts/cashier', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: body
+          });
+
+          if (!response.ok) {
+              throw new Error(`API request failed with status ${response.status}`);
+          }
+
+          const responseData = await response.json();
+
+          console.log('API response:', responseData);
+          return responseData;
+
+      } catch (error) {
+          console.error('Error:', error);
+      }
+
+  }
+
+
+
+  async function admin_get_receipts(type, query) {
+
+      const body = JSON.stringify({
+          type: type,
+          query: query
+      });
+
+      try {
+
+          const response = await fetch('/get/receipt/admin', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: body
+          });
+
+          if (!response.ok) {
+              throw new Error(`API request failed with status ${response.status}`);
+          }
+
+          const responseData = await response.json();
+
+          console.log('ADMIN API response:', responseData);
+          return responseData;
+
+      } catch (error) {
+          console.error('Error:', error);
+      }
+
+  }
+
+
+
+
+  function admin_view_receipts() {
+
+      admin_get_receipts("receipt_id", "123123-000001-000001")
+
+
+
+
+  }
+
+
+
+
+  function view_receipts() {
+
+      spinner_on();
+      search_prefix_value = document.getElementById("search_prefix").value
+      search_value_value = `${search_value.value}${search_prefix_value}`
+
+      if (search_value.value !== "" && !search_date_start.value && !search_date_end.value) {
+        //console.log("HERE",search_value.value)
+          if (current_search_mode === 'receipt') {
+              if (search_value_value.length > receipt_ref.length) {
+                  receipt_id = receipt_ref + search_value.value;
+                  console.log('searching with receipt id:', receipt_id);
+                  get_receipts('receipt_id', receipt_id).then(data => {
+                      populateTable(data);
+                      spinner_off();
+                  });
+              } else {
+                  console.log('empty search value')
+                  spinner_off();
+              }
+          } else if (current_search_mode === 'customer_number') {
+              if (search_value.value.length > '+91 '.length) {
+                  customer_number = search_value.value.substring('+91 '.length);
+                  console.log('searching with customer number:', customer_number);
+                  get_receipts('customer_number', customer_number).then(data => {
+                      populateTable(data);
+                      spinner_off();
+                  });
+              } else {
+                  console.log('empty search value')
+                  spinner_off();
+              }
+          }
+      } else if (search_date_start.value && !search_date_end.value && search_value.value.length === receipt_ref.length && current_search_mode === 'receipt' || search_date_start.value && !search_date_end.value.length && search_value.value === '+91 '.length && current_search_mode === 'customer_number') {
+          console.log('searching with date:', search_date_start.value);
+          //admin_get_receipts("date",search_date_start.value)
+          get_receipts('date', search_date_start.value).then(data => {
+              populateTable(data);
+              spinner_off();
+          });
+      } else if (search_date_start.value && search_date_end.value && search_value_value.length === receipt_ref.length && current_search_mode === 'receipt' || search_date_start.value && search_date_end.value && search_value.value.length === '+91 '.length && current_search_mode === 'customer_number') {
+          console.log('searching with date range:', search_date_start.value, search_date_end.value);
+          //          admin_get_receipts("date_range",{start_date: search_date_start.value, end_date: search_date_end.value})
+          get_receipts('date_range', {
+              start_date: search_date_start.value,
+              end_date: search_date_end.value
+          }).then(data => {
+              populateTable(data);
+              spinner_off();
+          });
+      } else if (search_date_start.value && !search_date_end.value.length && search_value.value.length > '+91 '.length && current_search_mode === 'customer_number') {
+          console.log('searching with date and customer number:', search_date_start.value, search_value.value);
+          customer_number = search_value.value.substring('+91 '.length);
+          //admin_get_receipts('customer_number_with_date', {date: search_date_start.value, customer_number: customer_number}
+          get_receipts('customer_number_with_date', {
+              date: search_date_start.value,
+              customer_number: search_value.value
+          }).then(data => {
+              populateTable(data);
+              spinner_off();
+          });
+
+      } else if (search_date_start.value && search_date_end.value && search_value.value.length > '+91 '.length && current_search_mode === 'customer_number') {
+          console.log('searching with date range and customer number:', search_date_start.value, search_date_end.value, search_value.value);
+          customer_number = search_value.value.substring('+91 '.length);
+          //admin_get_receipts('customer_number_with_date_range', {start_date: search_date_start.value, end_date: search_date_end.value, customer_number: customer_number})
+          get_receipts('customer_number_with_date_range', {
+              start_date: search_date_start.value,
+              end_date: search_date_end.value,
+              customer_number: search_value.value
+          }).then(data => {
+              populateTable(data);
+              spinner_off();
+          });
+      } else {
+          console.log('empty search value')
+          spinner_off();
+      }
+  }
+
+  
+
+  document.addEventListener("DOMContentLoaded", function() {
+        const dateRadio = document.getElementById('inline-radio');
+        const dateRangeRadio = document.getElementById('inline-2-radio');
+        const dateRangeDiv = document.getElementById('date-range-div');
+
+        dateRadio.addEventListener('change', function() {
+            if (this.checked) {
+                dateRangeDiv.classList.add('hidden');
+            }
+        });
+
+        dateRangeRadio.addEventListener('change', function() {
+            if (this.checked) {
+                dateRangeDiv.classList.remove('hidden');
+            }
+        });
+  });
+
+</script>

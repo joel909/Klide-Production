@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% include 'navbar.html' %}
+    <section>
+      <div class="overflow-hidden">
+        <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-20">
+          <div class="relative mx-auto max-w-5xl grid space-y-5 sm:space-y-10">
+            <div class="text-center">
+              <div class="flex justify-center mb-5">
+                <a class="inline-flex items-center gap-x-2 bg-white border border-gray-200 text-sm text-gray-800 p-1 px-3 rounded-full transition hover:border-gray-300 focus:outline-none focus:border-gray-300 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-200 dark:hover:border-neutral-600 dark:focus:border-neutral-600">
+                  Beta release - Join the waitlist
+                </a>
+              </div>
+              <h1 class="text-3xl text-gray-800 font-bold sm:text-5xl lg:text-6xl lg:leading-tight">
+                Streamline <span class="text-blue-500">Transactions</span> and Enhance <span class="text-blue-500">Customer Relationships.</span>
+              </h1>
+            </div>
+            <div id="pre-waitlist-signup" class="flex justify-center">
+              <div class="mx-auto max-w-2xl sm:flex sm:space-x-3 p-3 bg-white border rounded-lg shadow-lg shadow-gray-100">
+                <div class="w-full pb-2 sm:pb-0">
+                  <label for="hs-hero-name-1" class="block text-sm font-medium"><span class="sr-only">Your name</span></label>
+                  <input type="text" id="name" class="py-3 px-4 block w-full border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Your name">
+                </div>
+                <div class="pt-2 sm:pt-0 sm:pl-3 border-t border-gray-200 sm:border-t-0 sm:border-l w-full">
+                  <label for="hs-hero-email-1" class="block text-sm font-medium"><span class="sr-only">Your email address</span></label>
+                  <input type="email" id="email" class="py-3 px-4 block w-full border-transparent rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500" placeholder="Your email address">
+                </div>
+                <div id="waitlist-btn-div" class="whitespace-nowrap pt-2 sm:pt-0 grid sm:block">
+                  <button onclick="signupWaitlist()" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 focus:outline-none">Join Waitlist</button>
+                </div>
+              </div>
+            </div>
+            <div id="post-waitlist-signup" class="hidden flex flex-col items-center">
+              <div id="success-post-waitlist-signup" class="flex gap-x-3">
+                <span class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-green-50 text-green-600">
+                  <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <div class="grow">
+                  <span class="text-sm sm:text-base text-gray-500">
+                    You have successfully joined the waitlist. Please check your email for confirmation.
+                  </span>
+                </div>
+              </div>
+              <div id="already-on-waitlist" class="hidden flex gap-x-3">
+                <span class="mt-0.5 size-5 flex justify-center items-center rounded-full bg-yellow-50 text-yellow-600">
+                  <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="16" x2="12" y2="12" />
+                    <line x1="12" y1="8" x2="12" y2="8" />
+                  </svg>
+                </span>
+                <div class="grow">
+                  <span class="text-sm sm:text-base text-gray-500">
+                    Your email is already on the waitlist. We’ll notify you as soon as a spot becomes available.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+      <div class="space-y-2 md:space-y-4 text-center">
+        <h2 class="font-bold text-3xl lg:text-4xl text-gray-800 dark:text-neutral-200">
+          Effortless Selling Anywhere, Anytime.
+        </h2>
+        <p class="text-gray-500 dark:text-neutral-500">
+          Klide adapts seamlessly to any business niche, from pet stores to cafés, enhancing sales, and improving customer interactions effortlessly.
+        </p>
+      </div>
+      <div class="carousel-container">
+        <div class="carousel">
+          <button type="button" class="carousel-button p-5">Pet Stores</button>
+          <button type="button" class="carousel-button p-5">Convenience Stores</button>
+          <button type="button" class="carousel-button p-5">Farmer's Markets</button>
+          <button type="button" class="carousel-button p-5">Bakeries</button>
+          <button type="button" class="carousel-button p-5">Supermarkets</button>
+          <button type="button" class="carousel-button p-5">Retail Stores</button>
+          <button type="button" class="carousel-button p-5">Restaurants</button>
+          <button type="button" class="carousel-button p-5">Beauty Salons</button>
+          <button type="button" class="carousel-button p-5">Fashion Boutiques</button>
+          <button type="button" class="carousel-button p-5">Clothing Stores</button>
+          <button type="button" class="carousel-button p-5">Cafés & Coffee Shops</button>
+          <button type="button" class="carousel-button p-5">Pharmacies</button>
+          <button type="button" class="carousel-button p-5">Grocery Stores</button>
+          <button type="button" class="carousel-button p-5">Electronics Stores</button>
+          <button type="button" class="carousel-button p-5">Bookstores</button>
+          <button type="button" class="carousel-button p-5">Home Decor & Furniture Stores</button>
+          <button type="button" class="carousel-button p-5">Toy Stores</button>
+          <button type="button" class="carousel-button p-5">Flower Shops</button>
+          <button type="button" class="carousel-button p-5">Sporting Goods Stores</button>
+          <button type="button" class="carousel-button p-5">Pop-Up Shops</button>
+          <button type="button" class="carousel-button p-5">Hardware & DIY Stores</button>
+        </div>
+      </div>
+      
+      <style>
+        .carousel-container {
+          overflow: hidden;
+          width: 100%;
+          margin: 20px auto;
+          padding: 30px 0;
+          position: relative;
+        }
+    
+        .carousel {
+          display: flex;
+          gap: 20px;
+          white-space: nowrap;
+          animation: scrollCarousel 40s linear infinite;
+        }
+    
+        .carousel-button {
+          padding: 12px 24px;
+          font-size: 14px;
+          font-weight: 500;
+          color: #374151;
+          background-color: #ffffff;
+          border: 1px solid #e5e7eb;
+          border-radius: 9999px;
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+          transition: background-color 0.3s;
+          flex-shrink: 0;
+        }
+    
+        .carousel-button:hover {
+          background-color: #f9fafb;
+        }
+    
+        @keyframes scrollCarousel {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-100%);
+          }
+        }
+      </style>
+      
+      <script>
+        const carousel = document.querySelector('.carousel');
+        const items = Array.from(carousel.children);
+    
+        items.forEach(item => {
+          const clone = item.cloneNode(true);
+          carousel.appendChild(clone);
+        });
+    
+        const updateCarouselWidth = () => {
+          const itemWidth = items[0].offsetWidth + 20; 
+          const totalWidth = itemWidth * items.length * 2;
+          carousel.style.width = `${totalWidth}px`;
+        };
+    
+        updateCarouselWidth();
+        window.addEventListener('resize', updateCarouselWidth);
+      </script>
+    </section>
+
+    <section>
+      <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+        <div class="relative p-6 md:p-16">
+          <div class="relative z-10 lg:grid lg:grid-cols-12 lg:gap-16 lg:items-center">
+            <div class="mb-10 lg:mb-0 lg:col-span-6 lg:col-start-8 lg:order-2">
+              <h2 class="text-2xl text-gray-800 font-bold sm:text-3xl">
+                Exclusive features you won't find anywhere else.
+              </h2>
+              <nav class="grid gap-4 mt-5 md:mt-10" aria-label="Tabs" role="tablist" aria-orientation="vertical">
+                <button id="feature_1_btn" onclick="feature_display(1)" type="button" class="hs-tab-active:bg-white hs-tab-active:shadow-md hs-tab-active:hover:border-transparent text-start hover:bg-gray-200 focus:outline-none focus:bg-gray-200 p-4 md:p-5 rounded-xl active" id="tabs-with-card-item-1" aria-selected="true" data-hs-tab="#tabs-with-card-1" aria-controls="tabs-with-card-1" role="tab">
+                  <span class="flex gap-x-6">
+                    <svg id="feature_1_icon" class="shrink-0 mt-2 size-6 md:size-7 hs-tab-active:text-blue-600 text-gray-800" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4.5 5H18.2768C19.0446 5 19.526 5.82948 19.1451 6.49614L16.5758 10.9923C16.2198 11.6154 15.5571 12 14.8394 12H8M8 12L6.45625 14.47C6.03997 15.136 6.51881 16 7.30425 16H18M8 12L4.05279 4.10557C3.714 3.428 3.02148 3 2.26393 3H2M8 20C8 20.5523 7.55228 21 7 21C6.44772 21 6 20.5523 6 20C6 19.4477 6.44772 19 7 19C7.55228 19 8 19.4477 8 20ZM18 20C18 20.5523 17.5523 21 17 21C16.4477 21 16 20.5523 16 20C16 19.4477 16.4477 19 17 19C17.5523 19 18 19.4477 18 20Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>                 
+                    <span class="grow">
+                      <span id="feature_1_text" class="block text-lg font-semibold hs-tab-active:text-blue-600 text-gray-800">Live Billing</span>
+                      <span class="block mt-1 text-gray-800">Klide’s Live E-Billing allows customers to view their purchases and store billing in real time, providing transparency and enhancing the shopping experience.</span>
+                    </span>
+                  </span>
+                </button>
+                <button id="feature_2_btn" onclick="feature_display(2)" type="button" id="card" class="hs-tab-active:bg-white hs-tab-active:shadow-md hs-tab-active:hover:border-transparent text-start hover:bg-gray-200 focus:outline-none focus:bg-gray-200 p-4 md:p-5 rounded-xl" id="tabs-with-card-item-2" aria-selected="false" data-hs-tab="#tabs-with-card-2" aria-controls="tabs-with-card-2" role="tab">
+                  <span class="flex gap-x-6">
+                    <svg id="feature_2_icon" class="shrink-0 mt-2 size-6 md:size-7 text-gray-800 stroke-current" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M9 7H6.92013C6.40004 7 5.96678 7.39866 5.92359 7.91695L5.09025 17.917C5.04167 18.5 5.50176 19 6.0868 19H17.9132C18.4982 19 18.9583 18.5 18.9097 17.917L18.0764 7.91695C18.0332 7.39866 17.6 7 17.0799 7H15M9 7V5C9 3.89543 9.89543 3 11 3H13C14.1046 3 15 3.89543 15 5V7M9 7H15" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                    </svg>                
+                    <span class="grow">
+                      <span id="feature_2_text" class="block text-lg font-semibold hs-tab-active:text-blue-600 text-gray-800">E-Receipts</span>
+                      <span class="block mt-1 text-gray-800">Generate instant digital receipts with Klide’s E-Receipts, providing a convenient and eco-friendly way for customers to track their purchases.</span>
+                    </span>
+                  </span>
+                </button>
+                <button id="feature_3_btn" onclick="feature_display(3)" type="button" class="hs-tab-active:bg-white hs-tab-active:shadow-md hs-tab-active:hover:border-transparent text-start hover:bg-gray-200 focus:outline-none focus:bg-gray-200 p-4 md:p-5 rounded-xl" id="tabs-with-card-item-3" aria-selected="false" data-hs-tab="#tabs-with-card-3" aria-controls="tabs-with-card-3" role="tab">
+                  <span class="flex gap-x-6">
+                    <svg id="feature_3_icon" class="shrink-0 mt-2 size-6 md:size-7 hs-tab-active:text-blue-600 text-gray-800" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
+                    <span class="grow">
+                      <span id="feature_3_text" class="block text-lg font-semibold hs-tab-active:text-blue-600 text-gray-800">Modern UI</span>
+                      <span class="block mt-1 text-gray-800">Klide’s Modern UI delivers a sleek, intuitive interface for easy navigation and efficient POS operations, enhancing user experience.</span>
+                    </span>
+                  </span>
+                </button>
+              </nav>
+            </div>
+            <div class="lg:col-span-6">
+              <div class="relative">
+                <div>
+                  <div id="feature_1_tab" role="tabpanel" aria-labelledby="tabs-with-card-item-1">
+                    <img class="rounded-xl" src="/static/images/feature_1.jpeg">                                                   
+                  </div>
+                  <div id="feature_2_tab" class="hidden" role="tabpanel" aria-labelledby="tabs-with-card-item-2">
+                    <img class="rounded-xl" src="/static/images/feature_2.jpeg">
+                  </div>
+                  <div id="feature_3_tab" class="hidden" role="tabpanel" aria-labelledby="tabs-with-card-item-3">
+                    <img class="rounded-xl" src="/static/images/feature_3.jpeg">
+                  </div>
+                </div>
+                <div class="hidden absolute top-0 end-0 translate-x-20 md:block lg:translate-x-20">
+                  <svg class="w-16 h-auto text-orange-500" width="121" height="135" viewBox="0 0 121 135" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 16.4754C11.7688 27.4499 21.2452 57.3224 5 89.0164" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+                    <path d="M33.6761 112.104C44.6984 98.1239 74.2618 57.6776 83.4821 5" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+                    <path d="M50.5525 130C68.2064 127.495 110.731 117.541 116 78.0874" stroke="currentColor" stroke-width="10" stroke-linecap="round"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="absolute inset-0 grid grid-cols-12 size-full">
+            <div class="col-span-full lg:col-span-7 lg:col-start-6 bg-gray-100 w-full h-5/6 rounded-xl sm:h-3/4 lg:h-full"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+        <div class="grid md:grid-cols-2 gap-12">
+          <div class="lg:w-3/4">
+            <h2 class="text-3xl text-gray-800 font-bold lg:text-4xl">
+              Driving every avenue of your business operations.
+            </h2>
+            <p class="mt-3 text-gray-800">
+              Unlock the potential of your business with Klide, the cloud-based POS software designed to streamline operations, enhance customer experience, and drive growth. Whether you run a restaurant, retail store, or a beauty salon, Klide adapts to your needs, offering robust features such as e-receipts, inventory management, and sales reporting.
+            </p>
+            <p class="mt-5">
+              <a class="inline-flex items-center gap-x-1 text-sm text-blue-600 decoration-2 hover:underline focus:outline-none focus:underline font-medium" href="mailto:shailesh@klide.tech">
+                Contact sales to learn more
+                <svg class="shrink-0 size-4 transition ease-in-out group-hover:translate-x-1 group-focus:translate-x-1" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              </a>
+            </p>
+          </div>
+      
+          <div class="space-y-6 lg:space-y-10">
+            <div class="flex gap-x-5 sm:gap-x-8">
+              <span class="shrink-0 inline-flex justify-center items-center size-[46px] rounded-full border border-gray-200 bg-white shadow-sm mx-auto">
+                <svg class="shrink-0 size-6" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="swap">
+                    <path id="Icon" d="M18 57L9 48M9 48L18 39M9 48H33C37.9706 48 42 43.9706 42 39V36M30 36V33C30 28.0294 34.0294 24 39 24H63M63 24L54 33M63 24L54 15" stroke="#000000" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+                </svg>
+              </span>
+              <div class="grow">
+                <h3 class="text-base sm:text-lg font-semibold text-gray-800">
+                  Efficient Transactions
+                </h3>
+                <p class="mt-1 text-gray-600">
+                  Process sales swiftly with our intuitive interface.
+                  Accept multiple payment methods including credit cards, digital wallets, and more.
+                </p>
+              </div>
+            </div>
+      
+            <div class="flex gap-x-5 sm:gap-x-8">
+              <span class="shrink-0 inline-flex justify-center items-center size-[46px] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm mx-auto">
+                <svg class="shrink-0 size-8" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <g id="bar-chart-alt">
+                  <path id="Icon" d="M21 57V33M36 57V21M51 57V45" stroke="black" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </g>
+                </svg>                  
+              </span>
+              <div class="grow">
+                <h3 class="text-base sm:text-lg font-semibold text-gray-800">
+                  Scalable for Any Business Size
+                </h3>
+                <p class="mt-1 text-gray-600">
+                  Adapt Klide’s features to suit small businesses to large enterprises.
+                  Expand your operational reach with multi-location support.
+                </p>
+              </div>
+            </div>
+      
+            <div class="flex gap-x-5 sm:gap-x-8">
+              <span class="shrink-0 inline-flex justify-center items-center size-[46px] rounded-full border border-gray-200 bg-white text-gray-800 shadow-sm mx-auto">
+                <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.76a2 2 0 0 0 1.79-1.11L12 2h0a3.13 3.13 0 0 1 3 3.88Z"/></svg>
+              </span>
+              <div class="grow">
+                <h3 class="text-base sm:text-lg font-semibold text-gray-800">
+                  Real-Time AI Insights
+                </h3>
+                <p class="mt-1 text-gray-600">
+                  Access detailed reports on sales, customers, and data.
+                  Make informed decisions with powerful analytics.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+        <div class="max-w-2xl mx-auto text-center mb-10 lg:mb-14">
+          <h2 class="text-2xl font-bold md:text-4xl md:leading-tight">Your questions, answered</h2>
+          <p class="mt-1 text-gray-600">Answers to the most frequently asked questions.</p>
+        </div>
+      
+        <div class="max-w-2xl mx-auto">
+          <div class="hs-accordion-group">
+            <div class="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6 active" id="hs-basic-with-title-and-arrow-stretched-heading-one">
+              <button class="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500" aria-expanded="true" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-one">
+                What is the beta launch of Klide?
+                <svg class="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                <svg class="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+              </button>
+              <div id="hs-basic-with-title-and-arrow-stretched-collapse-one" class="hs-accordion-content w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-one">
+                <p class="text-gray-800">
+                  The beta launch of Klide is an early access phase where selected businesses can use our cloud POS solution before its official production release. This phase allows us to gather feedback, identify any issues, and make improvements based on real-world usage.
+                </p>
+              </div>
+            </div>
+      
+            <div class="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6" id="hs-basic-with-title-and-arrow-stretched-heading-two">
+              <button class="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500" aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-two">
+                How can I participate in the beta launch?
+                <svg class="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                <svg class="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+              </button>
+              <div id="hs-basic-with-title-and-arrow-stretched-collapse-two" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-two">
+                <p class="text-gray-800">
+                  To participate in the beta launch, you can sign up through our website or contact our team directly. We are looking for a diverse range of businesses to test Klide and provide valuable feedback.
+                </p>
+              </div>
+            </div>
+      
+            <div class="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6" id="hs-basic-with-title-and-arrow-stretched-heading-three">
+              <button class="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500" aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-three">
+                What features are available during the beta phase?
+                <svg class="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                <svg class="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+              </button>
+              <div id="hs-basic-with-title-and-arrow-stretched-collapse-three" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-three">
+                <p class="text-gray-800">
+                  During the beta phase, you will have access to core features of Klide, including live billing, e-receipts, and digital billing. You’ll be able to experience how Klide streamlines operations and reduces paper waste.
+                </p>
+              </div>
+            </div>
+      
+            <div class="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6" id="hs-basic-with-title-and-arrow-stretched-heading-four">
+              <button class="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500" aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-four">
+                Are there any costs associated with participating in the beta launch?
+                <svg class="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                <svg class="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+              </button>
+              <div id="hs-basic-with-title-and-arrow-stretched-collapse-four" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-four">
+                <p class="text-gray-800">
+                  Participation in the beta launch is free of charge. We value your feedback and in return, you get early access to our cutting-edge technology.
+                </p>
+              </div>
+            </div>
+      
+            <div class="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6" id="hs-basic-with-title-and-arrow-stretched-heading-five">
+              <button class="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500" aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-five">
+                What kind of support is available during the beta launch?
+                <svg class="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                <svg class="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+              </button>
+              <div id="hs-basic-with-title-and-arrow-stretched-collapse-five" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-five">
+                <p class="text-gray-800">
+                  We offer dedicated support to all beta participants, including setup assistance, troubleshooting, and regular updates. Our team is here to ensure you have a smooth experience and to address any questions or concerns.
+                </p>
+              </div>
+            </div>
+      
+            <div class="hs-accordion hs-accordion-active:bg-gray-100 rounded-xl p-6" id="hs-basic-with-title-and-arrow-stretched-heading-six">
+              <button class="hs-accordion-toggle group pb-3 inline-flex items-center justify-between gap-x-3 w-full md:text-lg font-semibold text-start text-gray-800 rounded-lg transition hover:text-gray-500 focus:outline-none focus:text-gray-500" aria-expanded="false" aria-controls="hs-basic-with-title-and-arrow-stretched-collapse-six">
+                What happens after the beta phase ends?
+                <svg class="hs-accordion-active:hidden block shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                <svg class="hs-accordion-active:block hidden shrink-0 size-5 text-gray-600 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+              </button>
+              <div id="hs-basic-with-title-and-arrow-stretched-collapse-six" class="hs-accordion-content hidden w-full overflow-hidden transition-[height] duration-300" role="region" aria-labelledby="hs-basic-with-title-and-arrow-stretched-heading-six">
+                <p class="text-gray-800">
+                  After the beta phase, we will review all feedback and make necessary improvements. Beta participants will be among the first to experience the finalized version of Klide, and we will provide details on how to transition smoothly to the production release.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% include 'footer.html' %}
+</html>
+<script>
+
+  const feature_1_btn = document.getElementById('feature_1_btn');
+  const feature_2_btn = document.getElementById('feature_2_btn');
+  const feature_3_btn = document.getElementById('feature_3_btn');
+  const feature_1_tab = document.getElementById('feature_1_tab');
+  const feature_2_tab = document.getElementById('feature_2_tab');
+  const feature_3_tab = document.getElementById('feature_3_tab');
+  const feature_1_text = document.getElementById('feature_1_text');
+  const feature_2_text = document.getElementById('feature_2_text');
+  const feature_3_text = document.getElementById('feature_3_text');
+  const feature_1_icon = document.getElementById('feature_1_icon');
+  const feature_2_icon = document.getElementById('feature_2_icon');
+  const feature_3_icon = document.getElementById('feature_3_icon');
+  const selected_feature_btn = 'hs-tab-active:bg-white hs-tab-active:shadow-md hs-tab-active:hover:border-transparent text-start hover:bg-gray-200 focus:outline-none focus:bg-gray-200 p-4 md:p-5 rounded-xl active';
+  const unselected_feature_btn = 'hs-tab-active:bg-white hs-tab-active:shadow-md hs-tab-active:hover:border-transparent text-start hover:bg-gray-200 focus:outline-none focus:bg-gray-200 p-4 md:p-5 rounded-xl';
+  const selected_feature_text = 'block text-lg font-semibold hs-tab-active:text-blue-600 text-gray-800';
+  const unselected_feature_text = 'block text-lg font-semibold hs-tab-active:text-blue-600 text-gray-800';
+  const selected_feature_icon = 'shrink-0 mt-2 size-6 md:size-7 hs-tab-active:text-blue-600 text-gray-800';
+  const unselected_feature_icon = 'shrink-0 mt-2 size-6 md:size-7 hs-tab-active:text-blue-600 text-gray-800';
+
+  function feature_display(index){
+    if (index === 1){
+      feature_1_btn.classList = selected_feature_btn;
+      feature_2_btn.classList = unselected_feature_btn;
+      feature_3_btn.classList = unselected_feature_btn;
+      feature_1_tab.classList = 'block';
+      feature_2_tab.classList = 'hidden';
+      feature_3_tab.classList = 'hidden';
+      feature_1_text.classList = selected_feature_text;
+      feature_2_text.classList = unselected_feature_text;
+      feature_3_text.classList = unselected_feature_text;
+      feature_1_icon.classList = selected_feature_icon;
+      feature_2_icon.classList = unselected_feature_icon;
+      feature_3_icon.classList = unselected_feature_icon;
+    } else if (index === 2){
+      feature_1_btn.classList = unselected_feature_btn;
+      feature_2_btn.classList = selected_feature_btn;
+      feature_3_btn.classList = unselected_feature_btn;
+      feature_1_tab.classList = 'hidden';
+      feature_2_tab.classList = 'block';
+      feature_3_tab.classList = 'hidden';
+      feature_1_text.classList = unselected_feature_text;
+      feature_2_text.classList = selected_feature_text;
+      feature_3_text.classList = unselected_feature_text;
+      feature_1_icon.classList = unselected_feature_icon;
+      feature_2_icon.classList = selected_feature_icon;
+      feature_3_icon.classList = unselected_feature_icon;
+    } else if (index === 3){
+      feature_1_btn.classList = unselected_feature_btn;
+      feature_2_btn.classList = unselected_feature_btn;
+      feature_3_btn.classList = selected_feature_btn;
+      feature_1_tab.classList = 'hidden';
+      feature_2_tab.classList = 'hidden';
+      feature_3_tab.classList = 'block';
+      feature_1_text.classList = unselected_feature_text;
+      feature_2_text.classList = unselected_feature_text;
+      feature_3_text.classList = selected_feature_text;
+      feature_1_icon.classList = unselected_feature_icon;
+      feature_2_icon.classList = unselected_feature_icon;
+      feature_3_icon.classList = selected_feature_icon;
+    }
+  }
+
+  const waitlistBtn = document.getElementById('waitlist-btn-div');
+  const pre_waitlist_signup = document.getElementById('pre-waitlist-signup');
+  const post_waitlist_signup = document.getElementById('post-waitlist-signup');
+  const success_post_waitlist_signup = document.getElementById('success-post-waitlist-signup');
+  const already_on_waitlist = document.getElementById('already-on-waitlist');
+  
+  function signupWaitlist() {
+      const nameInput = document.getElementById('name');
+      const emailInput = document.getElementById('email');
+      
+      let valid = true;
+
+      if (!nameInput.value.trim()) {
+          nameInput.classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
+          valid = false;
+      } else {
+          nameInput.classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!emailInput.value.trim() || !emailRegex.test(emailInput.value.trim())) {
+          emailInput.classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
+          valid = false;
+      } else {
+          emailInput.classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500');
+      }
+
+      if (valid) {
+          waitlistBtn.innerHTML = `<button disabled type="button" class="text-sm text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 inline-flex items-center"><svg aria-hidden="true" role="status" class="inline w-4 h-4 me-3 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="#E5E7EB"/><path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentColor"/></svg>Joining</button>`;
+          console.log('Signup waitlist');
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('email').value;
+          console.log(name, email);
+          const response = fetch('/api/waitlist/add', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                  name: name,
+                  email: email,
+              }),
+          })
+          .then(response => response.json()) 
+          .then(data => {
+              if (data.status === 'success') {
+                  console.log('Success:', data);
+                  pre_waitlist_signup.classList.add('hidden');
+                  post_waitlist_signup.classList.remove('hidden');
+                  success_post_waitlist_signup.classList.remove('hidden');
+                  already_on_waitlist.classList.add('hidden');
+              } else if (data.status === 'failed') {
+                  console.log('Failed:', data);
+                  pre_waitlist_signup.classList.add('hidden');
+                  post_waitlist_signup.classList.remove('hidden');
+                  success_post_waitlist_signup.classList.add('hidden');
+                  already_on_waitlist.classList.remove('hidden');
+              } else {
+                  console.log('Unexpected response:', data);
+              }
+          })
+          .catch(error => {
+              console.log('Fetch Error:', error);
+          });
+      }
+  }
+
+  function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  const cookieValue = getCookie('waitlist_signup');
+
+  if (cookieValue === 'true') {
+      pre_waitlist_signup.classList.add('hidden');
+      post_waitlist_signup.classList.remove('hidden');
+      success_post_waitlist_signup.classList.add('hidden');
+      already_on_waitlist.classList.remove('hidden');
+  }
+
+  const accordionToggles = document.querySelectorAll('.hs-accordion-toggle');
+
+  accordionToggles.forEach(toggle => {
+    toggle.addEventListener('click', function() {
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+
+      accordionToggles.forEach(otherToggle => {
+        const otherContent = otherToggle.nextElementSibling;
+        otherToggle.setAttribute('aria-expanded', 'false');
+        otherContent.classList.add('hidden');
+        otherContent.style.height = '0';
+        const otherIcons = otherToggle.querySelectorAll('svg');
+        otherIcons[0].classList.remove('hidden');
+        otherIcons[1].classList.add('hidden');
+        otherToggle.parentElement.classList.remove('active');
+      });
+
+      if (!isExpanded) {
+        const content = this.nextElementSibling;
+        this.setAttribute('aria-expanded', 'true');
+        content.classList.remove('hidden');
+        content.style.height = content.scrollHeight + 'px';
+        const icons = this.querySelectorAll('svg');
+        icons[0].classList.add('hidden');
+        icons[1].classList.remove('hidden');
+        this.parentElement.classList.add('active');
+      }
+    });
+  });
+
+</script>

@@ -1,0 +1,76 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/static/css/output.css" rel="stylesheet">
+    {% include 'meta.html' %}
+</head>
+<header class="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm">
+    <nav class="mt-4 relative max-w-2xl w-full bg-white border border-gray-200 rounded-xl mx-2 py-2.5 md:flex md:items-center md:justify-between md:py-0 md:px-4 md:mx-auto">
+        <div class="px-4 md:px-0 flex justify-between items-center">
+            <div>
+                <a class="flex-none rounded-md text-xl inline-block font-semibold focus:outline-none focus:opacity-80" href="/" aria-label="Preline">
+                    <img class="h-8 md:w-20" src="/static/images/logo-cropped.jpeg" alt="Klide">
+                </a>
+            </div>
+            <div class="md:hidden">
+                <button type="button" class="hs-collapse-toggle flex justify-center items-center size-6 border border-gray-200 text-gray-500 rounded-full hover:bg-gray-200 focus:outline-none focus:bg-gray-200" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation">
+                    <svg class="hs-collapse-open:hidden shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="6" y2="6"/><line x1="3" x2="21" y1="12" y2="12"/><line x1="3" x2="21" y1="18" y2="18"/></svg>
+                    <svg class="hs-collapse-open:block hidden shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+            </div>
+        </div>
+        <div id="nav-menu" class="hidden hs-collapse overflow-hidden transition-all duration-300 basis-full grow md:block" aria-labelledby="nav-toggle">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-end gap-2 md:gap-3 mt-3 md:mt-0 py-2 md:py-0 md:ps-7">
+                <a id="home-link" class="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-gray-800 font-medium text-gray-800 focus:outline-none" href="/" aria-current="page">Home</a>
+                <div id="features-link" class="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-transparent text-gray-500 bg-gray-200" aria-disabled="true" tabindex="-1">Features</div>
+                <a id="timeline-link" class="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-transparent text-gray-500 hover:text-gray-800 focus:outline-none" href="/timeline">Timeline</a>
+                <a id="login-link" class="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-transparent text-gray-500 hover:text-gray-800 focus:outline-none" href="/account/login">Login</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<script>
+    const toggleButton = document.getElementById('nav-toggle');
+    const navbarMenu = document.getElementById('nav-menu');
+
+    toggleButton.addEventListener('click', function() {
+        navbarMenu.classList.toggle('hidden');
+    });
+
+    const selected_nav = 'py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-gray-800 font-medium text-gray-800 focus:outline-none';
+    const unselected_nav = 'py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-transparent text-gray-500 hover:text-gray-800 focus:outline-none';
+
+    const home_link = document.getElementById('home-link');
+    const features_link = document.getElementById('features-link');
+    const timeline_link = document.getElementById('timeline-link');
+    const login_link = document.getElementById('login-link');
+
+    const pathname = window.location.pathname;
+    if (pathname === '/') {
+        home_link.className = selected_nav;
+        features_link.className = unselected_nav;
+        timeline_link.className = unselected_nav;
+        login_link.className = unselected_nav;
+    } else if (pathname === '/features') {
+        home_link.className = unselected_nav;
+        features_link.className = selected_nav;
+        timeline_link.className = unselected_nav;
+        login_link.className = unselected_nav;
+    } else if (pathname === '/timeline') {
+        home_link.className = unselected_nav;
+        features_link.className = unselected_nav;
+        timeline_link.className = selected_nav;
+        login_link.className = unselected_nav;
+    } else if (pathname === '/account/login') {
+        home_link.className = unselected_nav;
+        features_link.className = unselected_nav;
+        timeline_link.className = unselected_nav;
+        login_link.className = selected_nav;
+    } else {
+        home_link.className = selected_nav;
+        features_link.className = unselected_nav;
+        timeline_link.className = unselected_nav;
+        login_link.className = unselected_nav;
+    }
+</script>

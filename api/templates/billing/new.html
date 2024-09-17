@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include '/billing/navbar.html' %}
+  <body class="bg-gray-100">
+    <div id="modal_bg" class="z-40 fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center hidden">
+      <div id="payment_modal" style="width: 50%;" class="overflow-y-auto overflow-x-hidden z-40 hidden">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+          <div class="relative bg-white rounded-lg shadow">
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+              <h3 class="text-xl font-semibold text-gray-900"> Proceed to Payment </h3>
+              <button onclick="close_payment_modal()" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
+            </div>
+            <div class="p-4 md:p-5 space-y-4">
+              <div class="grid grid-cols-3 gap-4">
+                <div onclick="payment_cash()" id="payment_cash_element" class="rounded-xl border border-gray-200 p-4">
+                  <div>
+                    <svg class="h-10" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M19.3046 2.3916H4.69586C4.69586 4.1205 3.29433 5.52204 1.56543 5.52204V11.7829C3.29433 11.7829 4.69586 13.1844 4.69586 14.9133H19.3046C19.3046 13.1844 20.7061 11.7829 22.435 11.7829V5.52204C20.7061 5.52204 19.3046 4.1205 19.3046 2.3916Z" fill="url(#paint0_linear_302_144)" />
+                      <g filter="url(#filter0_bi_302_144)">
+                        <path d="M23.4783 16.4783H0.521739C0.233609 16.4783 0 16.2447 0 15.9566V1.34791C0 1.05978 0.233609 0.826172 0.521739 0.826172H23.4783C23.7664 0.826172 24 1.05978 24 1.34791V15.9566C24 16.2447 23.7664 16.4783 23.4783 16.4783Z" fill="#94ECB2" />
+                        <path d="M23.4783 16.3283H0.521739C0.316451 16.3283 0.15 16.1619 0.15 15.9566V1.34791C0.15 1.14262 0.316451 0.976172 0.521739 0.976172H23.4783C23.6835 0.976172 23.85 1.14262 23.85 1.34791V15.9566C23.85 16.1619 23.6835 16.3283 23.4783 16.3283Z" stroke="#97F1B6" stroke-width="0.3" />
+                      </g>
+                      <g filter="url(#filter1_i_302_144)">
+                        <path d="M19.3046 2.3916H4.69586C4.69586 4.1205 3.29433 5.52204 1.56543 5.52204V11.7829C3.29433 11.7829 4.69586 13.1844 4.69586 14.9133H19.3046C19.3046 13.1844 20.7061 11.7829 22.435 11.7829V5.52204C20.7061 5.52204 19.3046 4.1205 19.3046 2.3916Z" fill="white" fill-opacity="0.16" />
+                      </g>
+                      <g filter="url(#filter2_i_302_144)">
+                        <path d="M11.9998 12.3043C14.0169 12.3043 15.652 10.6692 15.652 8.65217C15.652 6.63513 14.0169 5 11.9998 5C9.98279 5 8.34766 6.63513 8.34766 8.65217C8.34766 10.6692 9.98279 12.3043 11.9998 12.3043Z" fill="white" fill-opacity="0.16" />
+                      </g>
+                      <defs>
+                        <filter id="filter0_bi_302_144" x="-6" y="-5.17383" width="36" height="27.6522" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                          <feGaussianBlur in="BackgroundImageFix" stdDeviation="3" />
+                          <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_302_144" />
+                          <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_302_144" result="shape" />
+                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                          <feOffset dy="2" />
+                          <feGaussianBlur stdDeviation="1.5" />
+                          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                          <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0" />
+                          <feBlend mode="normal" in2="shape" result="effect2_innerShadow_302_144" />
+                        </filter>
+                        <filter id="filter1_i_302_144" x="1.56543" y="2.3916" width="20.8696" height="14.5217" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                          <feOffset dy="2" />
+                          <feGaussianBlur stdDeviation="1" />
+                          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                          <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0" />
+                          <feBlend mode="normal" in2="shape" result="effect1_innerShadow_302_144" />
+                        </filter>
+                        <filter id="filter2_i_302_144" x="8.34766" y="5" width="7.30435" height="9.30435" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                          <feOffset dy="2" />
+                          <feGaussianBlur stdDeviation="1" />
+                          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                          <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0" />
+                          <feBlend mode="normal" in2="shape" result="effect1_innerShadow_302_144" />
+                        </filter>
+                        <linearGradient id="paint0_linear_302_144" x1="1.56543" y1="2.3916" x2="23.7593" y2="11.784" gradientUnits="userSpaceOnUse">
+                          <stop stop-color="#B1F0C6" />
+                          <stop offset="1" stop-color="#008C99" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </div>
+                  <div class="mt-1 text-gray-900 rubik-400 text-xl">Cash</div>
+                </div>
+                <div onclick="payment_card()" id="payment_card_element" class="rounded-xl border border-gray-200 p-4">
+                  <div>
+                    <svg class="h-10" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M19.8261 3H4.17391C3.52552 3 3 5.0145 3 7.5V15H21V7.5C21 5.0145 20.4745 3 19.8261 3Z" fill="url(#paint0_linear_303_145)" />
+                      <g filter="url(#filter0_bi_303_145)">
+                        <path d="M22.5 0H1.5C0.671573 0 0 0.671573 0 1.5V16.5C0 17.3284 0.671573 18 1.5 18H22.5C23.3284 18 24 17.3284 24 16.5V1.5C24 0.671573 23.3284 0 22.5 0Z" fill="#83E9FF" />
+                        <path d="M1.5 0.15H22.5C23.2456 0.15 23.85 0.754416 23.85 1.5V16.5C23.85 17.2456 23.2456 17.85 22.5 17.85H1.5C0.754416 17.85 0.15 17.2456 0.15 16.5V1.5C0.15 0.754415 0.754416 0.15 1.5 0.15Z" stroke="#3CDEB6" stroke-opacity="0.1" stroke-width="0.3" />
+                      </g>
+                      <path d="M24 4.00879H0V8.2945H24V4.00879Z" fill="url(#paint1_linear_303_145)" />
+                      <g filter="url(#filter1_i_303_145)">
+                        <path d="M11.9999 10.8657H2.57129V13.4372H11.9999V10.8657Z" fill="white" fill-opacity="0.16" />
+                      </g>
+                      <defs>
+                        <filter id="filter0_bi_303_145" x="-6" y="-6" width="36" height="30" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                          <feGaussianBlur in="BackgroundImageFix" stdDeviation="3" />
+                          <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_303_145" />
+                          <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_303_145" result="shape" />
+                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                          <feOffset dy="2" />
+                          <feGaussianBlur stdDeviation="1.5" />
+                          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                          <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0" />
+                          <feBlend mode="normal" in2="shape" result="effect2_innerShadow_303_145" />
+                        </filter>
+                        <filter id="filter1_i_303_145" x="2.57129" y="10.8657" width="9.42856" height="4.57143" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                          <feOffset dy="2" />
+                          <feGaussianBlur stdDeviation="1" />
+                          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                          <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0" />
+                          <feBlend mode="normal" in2="shape" result="effect1_innerShadow_303_145" />
+                        </filter>
+                        <linearGradient id="paint0_linear_303_145" x1="3" y1="3" x2="22.7111" y2="10.5075" gradientUnits="userSpaceOnUse">
+                          <stop stop-color="#75A5FF" />
+                          <stop offset="0.703125" stop-color="#2339FF" />
+                        </linearGradient>
+                        <linearGradient id="paint1_linear_303_145" x1="0" y1="4.00879" x2="9.95857" y2="18.1693" gradientUnits="userSpaceOnUse">
+                          <stop stop-color="#75A5FF" />
+                          <stop offset="0.703125" stop-color="#2339FF" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </div>
+                  <div class="mt-1 text-gray-900 rubik-400 text-xl">Card</div>
+                </div>
+                <div onclick="payment_upi()" id="payment_upi_element" class="rounded-xl border border-gray-200 p-4">
+                  <div>
+                    <svg class="h-10" viewBox="0 0 14 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11.5202 19.087H1.47982C1.2279 19.087 1.02344 18.8532 1.02344 18.5652V4.47828C1.02344 4.19028 1.2279 3.95654 1.47982 3.95654H11.5202C11.7721 3.95654 11.9766 4.19028 11.9766 4.47828V18.5652C11.9766 18.8532 11.7721 19.087 11.5202 19.087Z" fill="url(#paint0_linear_1_2)" />
+                      <g filter="url(#filter0_bi_1_2)">
+                        <path d="M12.6 0H1.4C0.626733 0 0 0.702023 0 1.56818V21.4318C0 22.298 0.626733 23 1.4 23H12.6C13.3733 23 14 22.298 14 21.4318V1.56818C14 0.702023 13.3733 0 12.6 0Z" fill="url(#paint1_linear_1_2)" />
+                        <path d="M1.4 0.15H12.6C13.2749 0.15 13.85 0.768412 13.85 1.56818V21.4318C13.85 22.2316 13.2749 22.85 12.6 22.85H1.4C0.725124 22.85 0.15 22.2316 0.15 21.4318V1.56818C0.15 0.768412 0.725124 0.15 1.4 0.15Z" stroke="url(#paint2_linear_1_2)" stroke-width="0.3" />
+                      </g>
+                      <g filter="url(#filter1_i_1_2)">
+                        <path d="M12.5 22H1.5C1.224 22 1 21.6756 1 21.2759V1.72414C1 1.32441 1.224 1 1.5 1H12.5C12.776 1 13 1.32441 13 1.72414V21.2759C13 21.6756 12.776 22 12.5 22Z" fill="white" fill-opacity="0.16" />
+                      </g>
+                      <defs>
+                        <filter id="filter0_bi_1_2" x="-6" y="-6" width="26" height="35" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                          <feGaussianBlur in="BackgroundImageFix" stdDeviation="3" />
+                          <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_1_2" />
+                          <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_1_2" result="shape" />
+                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                          <feOffset dy="2" />
+                          <feGaussianBlur stdDeviation="1.5" />
+                          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                          <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0" />
+                          <feBlend mode="normal" in2="shape" result="effect2_innerShadow_1_2" />
+                        </filter>
+                        <filter id="filter1_i_1_2" x="1" y="1" width="12" height="23" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                          <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                          <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                          <feOffset dy="2" />
+                          <feGaussianBlur stdDeviation="1" />
+                          <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                          <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0" />
+                          <feBlend mode="normal" in2="shape" result="effect1_innerShadow_1_2" />
+                        </filter>
+                        <linearGradient id="paint0_linear_1_2" x1="1.02344" y1="3.95654" x2="14.3089" y2="6.39861" gradientUnits="userSpaceOnUse">
+                          <stop stop-color="#FFA39E" />
+                          <stop offset="1" stop-color="#F01E33" />
+                        </linearGradient>
+                        <linearGradient id="paint1_linear_1_2" x1="0" y1="0" x2="17.1453" y2="2.64996" gradientUnits="userSpaceOnUse">
+                          <stop stop-color="#FFBF80" />
+                          <stop offset="1" stop-color="#FF384C" />
+                        </linearGradient>
+                        <linearGradient id="paint2_linear_1_2" x1="0.4375" y1="1.04545" x2="14" y2="1.04545" gradientUnits="userSpaceOnUse">
+                          <stop stop-color="#FFD580" />
+                          <stop offset="1" stop-color="#E65A53" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </div>
+                  <div class="mt-1 text-gray-900 rubik-400 text-xl">UPI</div>
+                </div>
+              </div>
+              <div id="payment_methods_summary" class="mt-5 hidden">
+                    <div id="payment_cash_summary" class="w-full mx-auto flex mb-2 hidden">
+                      <div class="relative w-full">
+                          <div class="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
+                              <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 2a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1M2 5h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"/>
+                          </svg>
+                          </div>
+                          <input type="number" id="payment_cash_input" class="block p-2.5 w-full z-20 ps-10 text-sm text-gray-900 bg-gray-50 rounded-s-lg border-e-gray-50 border-e-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Enter amount" required />
+                      </div>
+                      <button class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-e-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
+                        <svg class="h-4 mr-2" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M19.3046 2.3916H4.69586C4.69586 4.1205 3.29433 5.52204 1.56543 5.52204V11.7829C3.29433 11.7829 4.69586 13.1844 4.69586 14.9133H19.3046C19.3046 13.1844 20.7061 11.7829 22.435 11.7829V5.52204C20.7061 5.52204 19.3046 4.1205 19.3046 2.3916Z" fill="url(#paint0_linear_302_144)" />
+                          <g filter="url(#filter0_bi_302_144)">
+                            <path d="M23.4783 16.4783H0.521739C0.233609 16.4783 0 16.2447 0 15.9566V1.34791C0 1.05978 0.233609 0.826172 0.521739 0.826172H23.4783C23.7664 0.826172 24 1.05978 24 1.34791V15.9566C24 16.2447 23.7664 16.4783 23.4783 16.4783Z" fill="#94ECB2" />
+                            <path d="M23.4783 16.3283H0.521739C0.316451 16.3283 0.15 16.1619 0.15 15.9566V1.34791C0.15 1.14262 0.316451 0.976172 0.521739 0.976172H23.4783C23.6835 0.976172 23.85 1.14262 23.85 1.34791V15.9566C23.85 16.1619 23.6835 16.3283 23.4783 16.3283Z" stroke="#97F1B6" stroke-width="0.3" />
+                          </g>
+                          <g filter="url(#filter1_i_302_144)">
+                            <path d="M19.3046 2.3916H4.69586C4.69586 4.1205 3.29433 5.52204 1.56543 5.52204V11.7829C3.29433 11.7829 4.69586 13.1844 4.69586 14.9133H19.3046C19.3046 13.1844 20.7061 11.7829 22.435 11.7829V5.52204C20.7061 5.52204 19.3046 4.1205 19.3046 2.3916Z" fill="white" fill-opacity="0.16" />
+                          </g>
+                          <g filter="url(#filter2_i_302_144)">
+                            <path d="M11.9998 12.3043C14.0169 12.3043 15.652 10.6692 15.652 8.65217C15.652 6.63513 14.0169 5 11.9998 5C9.98279 5 8.34766 6.63513 8.34766 8.65217C8.34766 10.6692 9.98279 12.3043 11.9998 12.3043Z" fill="white" fill-opacity="0.16" />
+                          </g>
+                          <defs>
+                            <filter id="filter0_bi_302_144" x="-6" y="-5.17383" width="36" height="27.6522" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                              <feGaussianBlur in="BackgroundImageFix" stdDeviation="3" />
+                              <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_302_144" />
+                              <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_302_144" result="shape" />
+                              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                              <feOffset dy="2" />
+                              <feGaussianBlur stdDeviation="1.5" />
+                              <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                              <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0" />
+                              <feBlend mode="normal" in2="shape" result="effect2_innerShadow_302_144" />
+                            </filter>
+                            <filter id="filter1_i_302_144" x="1.56543" y="2.3916" width="20.8696" height="14.5217" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                              <feOffset dy="2" />
+                              <feGaussianBlur stdDeviation="1" />
+                              <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                              <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0" />
+                              <feBlend mode="normal" in2="shape" result="effect1_innerShadow_302_144" />
+                            </filter>
+                            <filter id="filter2_i_302_144" x="8.34766" y="5" width="7.30435" height="9.30435" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                              <feOffset dy="2" />
+                              <feGaussianBlur stdDeviation="1" />
+                              <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                              <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0" />
+                              <feBlend mode="normal" in2="shape" result="effect1_innerShadow_302_144" />
+                            </filter>
+                            <linearGradient id="paint0_linear_302_144" x1="1.56543" y1="2.3916" x2="23.7593" y2="11.784" gradientUnits="userSpaceOnUse">
+                              <stop stop-color="#B1F0C6" />
+                              <stop offset="1" stop-color="#008C99" />
+                            </linearGradient>
+                          </defs>
+                        </svg>
+                          Cash 
+                      </button>
+                    </div>
+                    <div id="payment_card_summary" class="w-full mx-auto flex mb-2 hidden">
+                      <div class="relative w-full">
+                          <div class="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
+                              <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 2a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1M2 5h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"/>
+                          </svg>
+                          </div>
+                          <input type="number" id="payment_card_input" class="block p-2.5 w-full z-20 ps-10 text-sm text-gray-900 bg-gray-50 rounded-s-lg border-e-gray-50 border-e-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Enter amount" required />
+                      </div>
+                      <button class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-e-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
+                        <svg class="h-4 mr-2" viewBox="0 0 24 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M19.8261 3H4.17391C3.52552 3 3 5.0145 3 7.5V15H21V7.5C21 5.0145 20.4745 3 19.8261 3Z" fill="url(#paint0_linear_303_145)" />
+                          <g filter="url(#filter0_bi_303_145)">
+                            <path d="M22.5 0H1.5C0.671573 0 0 0.671573 0 1.5V16.5C0 17.3284 0.671573 18 1.5 18H22.5C23.3284 18 24 17.3284 24 16.5V1.5C24 0.671573 23.3284 0 22.5 0Z" fill="#83E9FF" />
+                            <path d="M1.5 0.15H22.5C23.2456 0.15 23.85 0.754416 23.85 1.5V16.5C23.85 17.2456 23.2456 17.85 22.5 17.85H1.5C0.754416 17.85 0.15 17.2456 0.15 16.5V1.5C0.15 0.754415 0.754416 0.15 1.5 0.15Z" stroke="#3CDEB6" stroke-opacity="0.1" stroke-width="0.3" />
+                          </g>
+                          <path d="M24 4.00879H0V8.2945H24V4.00879Z" fill="url(#paint1_linear_303_145)" />
+                          <g filter="url(#filter1_i_303_145)">
+                            <path d="M11.9999 10.8657H2.57129V13.4372H11.9999V10.8657Z" fill="white" fill-opacity="0.16" />
+                          </g>
+                          <defs>
+                            <filter id="filter0_bi_303_145" x="-6" y="-6" width="36" height="30" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                              <feGaussianBlur in="BackgroundImageFix" stdDeviation="3" />
+                              <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_303_145" />
+                              <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_303_145" result="shape" />
+                              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                              <feOffset dy="2" />
+                              <feGaussianBlur stdDeviation="1.5" />
+                              <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                              <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0" />
+                              <feBlend mode="normal" in2="shape" result="effect2_innerShadow_303_145" />
+                            </filter>
+                            <filter id="filter1_i_303_145" x="2.57129" y="10.8657" width="9.42856" height="4.57143" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                              <feOffset dy="2" />
+                              <feGaussianBlur stdDeviation="1" />
+                              <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                              <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0" />
+                              <feBlend mode="normal" in2="shape" result="effect1_innerShadow_303_145" />
+                            </filter>
+                            <linearGradient id="paint0_linear_303_145" x1="3" y1="3" x2="22.7111" y2="10.5075" gradientUnits="userSpaceOnUse">
+                              <stop stop-color="#75A5FF" />
+                              <stop offset="0.703125" stop-color="#2339FF" />
+                            </linearGradient>
+                            <linearGradient id="paint1_linear_303_145" x1="0" y1="4.00879" x2="9.95857" y2="18.1693" gradientUnits="userSpaceOnUse">
+                              <stop stop-color="#75A5FF" />
+                              <stop offset="0.703125" stop-color="#2339FF" />
+                            </linearGradient>
+                          </defs>
+                        </svg>
+                          Card 
+                      </button>
+                    </div>
+                    <div id="payment_upi_summary" class="w-full mx-auto flex mb-2 hidden">
+                      <div class="relative w-full">
+                          <div class="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
+                              <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 2a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1M2 5h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm8 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z"/>
+                          </svg>
+                          </div>
+                          <input type="number" id="payment_upi_input" class="block p-2.5 w-full z-20 ps-10 text-sm text-gray-900 bg-gray-50 rounded-s-lg border-e-gray-50 border-e-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Enter amount" required />
+                      </div>
+                      <button class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-e-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">
+                        <svg class="h-4 mr-2" viewBox="0 0 14 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M11.5202 19.087H1.47982C1.2279 19.087 1.02344 18.8532 1.02344 18.5652V4.47828C1.02344 4.19028 1.2279 3.95654 1.47982 3.95654H11.5202C11.7721 3.95654 11.9766 4.19028 11.9766 4.47828V18.5652C11.9766 18.8532 11.7721 19.087 11.5202 19.087Z" fill="url(#paint0_linear_1_2)" />
+                          <g filter="url(#filter0_bi_1_2)">
+                            <path d="M12.6 0H1.4C0.626733 0 0 0.702023 0 1.56818V21.4318C0 22.298 0.626733 23 1.4 23H12.6C13.3733 23 14 22.298 14 21.4318V1.56818C14 0.702023 13.3733 0 12.6 0Z" fill="url(#paint1_linear_1_2)" />
+                            <path d="M1.4 0.15H12.6C13.2749 0.15 13.85 0.768412 13.85 1.56818V21.4318C13.85 22.2316 13.2749 22.85 12.6 22.85H1.4C0.725124 22.85 0.15 22.2316 0.15 21.4318V1.56818C0.15 0.768412 0.725124 0.15 1.4 0.15Z" stroke="url(#paint2_linear_1_2)" stroke-width="0.3" />
+                          </g>
+                          <g filter="url(#filter1_i_1_2)">
+                            <path d="M12.5 22H1.5C1.224 22 1 21.6756 1 21.2759V1.72414C1 1.32441 1.224 1 1.5 1H12.5C12.776 1 13 1.32441 13 1.72414V21.2759C13 21.6756 12.776 22 12.5 22Z" fill="white" fill-opacity="0.16" />
+                          </g>
+                          <defs>
+                            <filter id="filter0_bi_1_2" x="-6" y="-6" width="26" height="35" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                              <feGaussianBlur in="BackgroundImageFix" stdDeviation="3" />
+                              <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_1_2" />
+                              <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_1_2" result="shape" />
+                              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                              <feOffset dy="2" />
+                              <feGaussianBlur stdDeviation="1.5" />
+                              <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                              <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0" />
+                              <feBlend mode="normal" in2="shape" result="effect2_innerShadow_1_2" />
+                            </filter>
+                            <filter id="filter1_i_1_2" x="1" y="1" width="12" height="23" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                              <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                              <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+                              <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                              <feOffset dy="2" />
+                              <feGaussianBlur stdDeviation="1" />
+                              <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1" />
+                              <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.4 0" />
+                              <feBlend mode="normal" in2="shape" result="effect1_innerShadow_1_2" />
+                            </filter>
+                            <linearGradient id="paint0_linear_1_2" x1="1.02344" y1="3.95654" x2="14.3089" y2="6.39861" gradientUnits="userSpaceOnUse">
+                              <stop stop-color="#FFA39E" />
+                              <stop offset="1" stop-color="#F01E33" />
+                            </linearGradient>
+                            <linearGradient id="paint1_linear_1_2" x1="0" y1="0" x2="17.1453" y2="2.64996" gradientUnits="userSpaceOnUse">
+                              <stop stop-color="#FFBF80" />
+                              <stop offset="1" stop-color="#FF384C" />
+                            </linearGradient>
+                            <linearGradient id="paint2_linear_1_2" x1="0.4375" y1="1.04545" x2="14" y2="1.04545" gradientUnits="userSpaceOnUse">
+                              <stop stop-color="#FFD580" />
+                              <stop offset="1" stop-color="#E65A53" />
+                            </linearGradient>
+                          </defs>
+                        </svg>
+                          UPI
+                      </button>
+                    </div>
+              </div>
+              <button id="generate_receipt" onclick="generate_receipt()" type="button" class="w-full hidden col-span-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Generate Receipt</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="payment_methods_sum_fail" style="width: 50%;" class="hidden overflow-y-auto overflow-x-hidden z-50">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+          <div class="relative bg-white rounded-lg shadow">
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+              <h3 class="text-xl font-semibold text-gray-900"> Payment Methods dont add up </h3>
+              <button onclick="close_payment_methods_sum_fail_modal()" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
+            </div>
+            <div class="p-4 md:p-5 space-y-4 text-center">
+                <h3 class="text-lg leading-6 font-medium text-red-600">Oops! There's a Problem.</h3>
+                <p class="text-sm text-gray-600">It seems the payment methods you've chosen don't add up correctly.</p>
+                <button id="generate_receipt" onclick="close_payment_methods_sum_fail_modal()" type="button" class="w-full mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Okay</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="cashier_selected_fail_modal" style="width: 50%;" class="hidden overflow-y-auto overflow-x-hidden z-50">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+          <div class="relative bg-white rounded-lg shadow">
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+              <h3 class="text-xl font-semibold text-gray-900"> Current cashier not Selected </h3>
+              <button onclick="close_cashier_selected_fail_modal()" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
+            </div>
+            <div class="p-4 md:p-5 space-y-4 text-center">
+                <h3 class="text-lg leading-6 font-medium text-red-600">Oops! There's a Problem.</h3>
+                <p class="text-sm text-gray-600">It seems the payment methods you've not chosen the current cashier.</p>
+                <button id="generate_receipt" onclick="close_cashier_selected_fail_modal()" type="button" class="w-full mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Okay</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="customer_number_fail" style="width: 50%;" class="hidden overflow-y-auto overflow-x-hidden z-50">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+          <div class="relative bg-white rounded-lg shadow">
+            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+              <h3 class="text-xl font-semibold text-gray-900"> Customer Number isn't valid </h3>
+              <button onclick="close_customer_number_fail_modal()" type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center">
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                </svg>
+                <span class="sr-only">Close modal</span>
+              </button>
+            </div>
+            <div class="p-4 md:p-5 space-y-4 text-center">
+                <h3 class="text-lg leading-6 font-medium text-red-600">Oops! The Customer Number isn't valid.</h3>
+                <p class="text-sm text-gray-600">The Customer number is less than ten digits.</p>
+                <button id="generate_receipt" onclick="close_customer_number_fail_modal()" type="button" class="w-full mt-5 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Okay</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-cols-4">
+      <div style="height: 90vh;" class="col-span-3 m-2 bg-white p-3 rounded-xl relative">
+        <div class="w-full mx-auto mb-2">
+          <div class="relative">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+              <svg class="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+              </svg>
+            </div>
+            <input autocomplete="off" type="search" id="barcode_search" class="block w-full p-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Scan Barcode" />
+          </div>
+        </div>
+        <div id="search_results_container" class="z-50 hidden mt-16 absolute inset-0 w-full h-full overflow-x-auto bg-white">
+          <table id="search_results_table" class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3">Product name</th>
+                <th scope="col" class="px-6 py-3">Price</th>
+              </tr>
+            </thead>
+            <tbody onclick="handleClick(event)"></tbody>
+          </table>
+        </div>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <table id="product_table" class="w-full text-sm text-left rtl:text-right text-gray-500">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50">
+              <tr>
+                <th scope="col" class="px-6 py-3">Product</th>
+                <th scope="col" class="px-6 py-3">Qty</th>
+                <th scope="col" class="px-6 py-3">Price</th>
+                <th scope="col" class="px-6 py-3">Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-span-1">
+        <div class="rounded-xl bg-white m-2 p-4">
+          <h4 class="text-xs font-semibold mb-2 uppercase text-gray-800">Customer Number</h4>
+          <div class="flex items-center">
+            <div class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 bg-gray-50 text-sm font-medium text-center text-gray-900 border border-gray-300 rounded-s-lg focus:ring-4 focus:outline-none focus:ring-gray-100" type="button">+91</div>
+            <div class="relative w-full">
+              <input autocomplete="off" type="tel" onblur="input_customer_number()" id="customer_number" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg border-s-0 border border-gray-300 focus:ring-blue-500 focus:border-blue-500" pattern="[0-9]{10}" maxlength="10" />
+              <button id="refresh" onclick="refresh()" class="hidden absolute top-0 right-0 mt-1 mr-1 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-1.5">Change</button>
+            </div>
+          </div>
+          <div class="rounded-lg p-6 mx-auto">
+            <div class="text-center">
+              <p class="text-sm text-gray-600">Use your device's camera to scan the QR code below for your live bill.</p>
+            </div>
+            <div class="flex justify-center mt-6">
+              <div class="w-40 h-40 bg-gray-200 flex items-center justify-center rounded-md">
+                <div id="qrcode"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
+          Toggle modal
+      </button>
+        <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow">
+                    <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="popup-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <div class="p-4 md:p-5 text-center">
+                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                        </svg>
+                        <h3 class="mb-5 text-lg font-normal text-gray-500">Do you want to print a receipt?</h3>
+                        <button data-modal-hide="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                            Yes
+                        </button>
+                        <button data-modal-hide="popup-modal" onclick="CloseBillCreationStatusModal()" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
+                            No
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rounded-xl mt-5 bg-white m-2 pt-4 px-4 pb-2">
+          <div>
+            <h4 class="text-xs font-semibold uppercase text-gray-800">Payment Summary</h4>
+            <ul class="mt-3 flex flex-col">
+              <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+                <div class="flex items-center justify-between w-full">
+                  <span class="text-xs uppercase">Subtotal</span>
+                  <span id="subtotal">₹0.00</span>
+                </div>
+              </li>
+              <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+                <div class="flex items-center justify-between w-full">
+                  <span class="text-xs uppercase">Gst</span>
+                  <span id="gst">₹0.00</span>
+                </div>
+              </li>
+              <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+                <div onclick="discount()" class="cursor-pointer flex items-center justify-between w-full">
+                  <span class="text-xs text-purple-700 uppercase">Discount <span id="discount_field"></span>
+                  </span>
+                  <span id="discount_value" class="text-purple-700">₹0.00</span>
+                </div>
+              </li>
+              <li class="inline-flex items-center gap-x-2 py-3 px-4 text-sm font-semibold bg-gray-50 border text-gray-800 -mt-px first:rounded-t-lg first:mt-0 last:rounded-b-lg">
+                <div class="flex items-center justify-between w-full">
+                  <span class="text-xs uppercase">Total</span>
+                  <span id="total">₹0.00</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <button type="button" onclick="open_payment_modal()" class="w-full mt-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2">Proceed to Payment</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  
+    merchant_id = findCookie('merchant_id');
+    const store_loc  = findCookie("store_location")
+    device_id = findCookie("device_id")
+    receipt_ref = findCookie("receipt_ref")
+    const customer_number_fail = document.getElementById('customer_number_fail');
+
+    function input_customer_number() {
+        const customer_number_element = document.getElementById('customer_number');
+        const customer_number = customer_number_element.value;
+        if (customer_number.length != 10) {
+            modal_bg.classList.remove('hidden');
+            customer_number_fail.classList.remove('hidden');
+        } else {
+          customer_number_element.disabled = true;
+          const refresh = document.getElementById('refresh');
+          refresh.classList.remove('hidden');
+        }
+    }
+
+    function close_customer_number_fail_modal() {
+        modal_bg.classList.add('hidden');
+        customer_number_fail.classList.add('hidden');
+    }
+
+    function refresh(){
+        window.location.reload();
+    }
+
+    function generate_qr(connection_id) {
+        var qrcode = new QRCode("qrcode", {
+            text: window.location.origin + "/user/new/bill?connection_id=" + connection_id,
+            width: 200,
+            height: 200,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+        console.log(window.location.origin + "/user/new/bill?connection_id=" + connection_id)
+    }
+
+    let barcodeData = [];
+    let current_bill = [];
+
+    async function fetchBarcodeData() {
+        try {
+            console.log("Fetching barcode data...");
+            barcodeData = await readData();
+            console.log("Barcode data fetched successfully From Indexed DB:", barcodeData);
+        } catch (error) {
+            console.error("Error fetching barcode data:", error);
+        }
+    }
+
+    async function readData() {
+        const dbname = "Database";
+        const request = indexedDB.open(dbname);
+
+        return new Promise((resolve, reject) => {
+            request.onerror = (event) => {
+                reject(event.target.errorCode);
+            };
+
+            request.onsuccess = (event) => {
+                const db = event.target.result;
+                const transaction = db.transaction(["Barcodes"]);
+                const objectStore = transaction.objectStore("Barcodes");
+                const getRequest = objectStore.getAll();
+
+                getRequest.onerror = (event) => {
+                    reject(event.target.error);
+                };
+
+                getRequest.onsuccess = (event) => {
+                    const results = getRequest.result;
+                    resolve(results);
+                };
+            };
+        });
+    }
+
+    function addToBill(product) {
+        const existingProduct = current_bill.find(item => item.name === product.name);
+        if (existingProduct) {
+            existingProduct.qty++;
+            existingProduct.gst_value = (existingProduct.qty*((parseFloat(existingProduct.price.replace("₹","")*parseFloat(existingProduct.gst)/100)))).toFixed(2)
+            existingProduct.product_price_excl_gst = (existingProduct.qty*(parseFloat(existingProduct.price.replace("₹",""))-(parseFloat(existingProduct.price.replace("₹","")*parseFloat(existingProduct.gst)/100)))).toFixed(2)
+            console.log(existingProduct.product_price_excl_gst)
+            console.log(existingProduct.gst_value)
+        } else {
+            current_bill.push({
+                name: product.name,
+                price: product.price,
+                qty: 1,
+                gst: product.gst,
+                gst_value:((parseFloat(product.price.replace("₹","")*parseFloat(product.gst)/100))).toFixed(2),
+                product_price_excl_gst:(parseFloat(product.price.replace("₹",""))-(parseFloat(product.price.replace("₹","")*parseFloat(product.gst)/100))).toFixed(2)
+            });
+        }
+        console.log(current_bill)
+        console.log()
+        renderCurrentBill();
+    }
+
+
+    function removeFromBill(name) {
+        current_bill = current_bill.filter(product => product.name !== name);
+        renderCurrentBill();
+    }
+
+    function resetBill(){
+      current_bill =[]
+      const customer_number_element = document.getElementById('customer_number');
+      customer_number_element.value = ''
+      renderCurrentBill();
+    }
+
+    function renderCurrentBill() {
+        const tableBody = document.querySelector('#product_table tbody');
+        tableBody.innerHTML = '';
+
+        current_bill.forEach(product => {
+            const row = `
+                  <tr class="bg-white border-b">
+                      <td class="px-6 py-4 font-semibold truncate-product w-2/5 text-gray-900">${product.name}</td>
+                      <td class="px-6 py-4">
+                          <div class="flex items-center">
+                              <button class="decrement inline-flex items-center justify-center p-1 me-3 text-sm font-medium h-6 w-6 text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200" type="button" onclick="decrementQuantity('${product.name}')">
+                                  <span class="sr-only">Decrease quantity</span>
+                                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+                                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
+                                  </svg>
+                              </button>
+                              <div>
+                                  <input type="number" class="quantity bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1" value="${product.qty}" min="1" onchange="updateQuantity('${product.name}', this.value)" required />
+                              </div>
+                              <button class="increment inline-flex items-center justify-center h-6 w-6 p-1 ms-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200" type="button" onclick="incrementQuantity('${product.name}')">
+                                  <span class="sr-only">Increase quantity</span>
+                                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
+                                  </svg>
+                              </button>
+                          </div>
+                      </td>
+                      <td class="px-6 py-4">${product.price}</td>
+                      <td class="px-6 py-4">
+                          <button class="remove font-medium text-red-600 hover:underline" onclick="removeFromBill('${product.name}')">Remove</button>
+                      </td>
+                  </tr>
+              `;
+            tableBody.innerHTML += row;
+        });
+
+        payment_summary();
+        send_peers(current_bill);
+    }
+
+    const searchResultsContainer = document.getElementById('search_results_container');
+    const searchResultsTable = searchResultsContainer.querySelector('table tbody');
+
+    function renderSearchResults(searchQuery) {
+
+        searchResultsTable.innerHTML = '';
+
+        const filteredData = barcodeData.filter(item =>
+            Object.values(item).some(value =>
+                typeof value === 'string' && value.toLowerCase().includes(searchQuery)
+            )
+        );
+
+        if (filteredData.length === 0) {
+            searchResultsContainer.classList.add('hidden');
+            return;
+        }
+
+        const fragment = document.createDocumentFragment();
+
+        filteredData.forEach(item => {
+            const row = document.createElement('tr');
+            row.classList.add('bg-white', 'border-b', 'cursor-pointer');
+            row.innerHTML = `
+                    <td class="px-6 py-4 font-medium text-gray-900">${item.name}</td>
+                    <td class="px-6 py-4">₹${item.price}</td>
+                    <td class="hidden px-6 py-4">${item.GST}</td>
+                `;
+            fragment.appendChild(row);
+        });
+
+        searchResultsTable.appendChild(fragment);
+        searchResultsContainer.classList.remove('hidden');
+
+    }
+
+    function handleClick(event) {
+        console.log('clicked', event.target);
+        searchResultsTable.removeEventListener('click', handleClick);
+        searchResultsContainer.classList.add('hidden');
+        const targetRow = event.target.closest('tr');
+        if (!targetRow) return;
+        const productName = targetRow.querySelector('td:nth-child(1)').innerText;
+        const productPrice = targetRow.querySelector('td:nth-child(2)').innerText;
+        const productGst = targetRow.querySelector('td:nth-child(3)').innerText;
+        const product = {
+            name: productName,
+            price: productPrice,
+            gst: productGst,
+        };
+        addToBill(product);
+    }
+
+    const barcodeSearchInput = document.getElementById('barcode_search');
+    barcodeSearchInput.addEventListener('input', function() {
+        const searchQuery = barcodeSearchInput.value.toLowerCase();
+
+        if (searchQuery.length === 0) {
+            document.getElementById('search_results_container').classList.add('hidden');
+            return;
+        }
+
+        renderSearchResults(searchQuery);
+    });
+
+    function incrementQuantity(name) {
+        const product = current_bill.find(item => item.name === name);
+        if (product) {
+            product.qty++;
+            product.gst_value = (product.qty*((parseFloat(product.price.replace("₹","")*parseFloat(product.gst)/100)))).toFixed(2)
+            product.product_price_excl_gst = (product.qty*(parseFloat(product.price.replace("₹",""))-(parseFloat(product.price.replace("₹","")*parseFloat(product.gst)/100)))).toFixed(2)
+
+            console.log(product.gst_value)
+            renderCurrentBill();
+        }
+    }
+
+    function decrementQuantity(name) {
+        const product = current_bill.find(item => item.name === name);
+        if (product && product.qty > 1) {
+            product.qty--;
+            product.gst_value = (product.qty*((parseFloat(product.price.replace("₹","")*parseFloat(product.gst)/100)))).toFixed(2)
+            product.product_price_excl_gst = (product.qty*(parseFloat(product.price.replace("₹",""))-(parseFloat(product.price.replace("₹","")*parseFloat(product.gst)/100)))).toFixed(2)
+            renderCurrentBill();
+        }
+    }
+
+    var subtotal = 0;
+    var gst = 0;
+    var discount = 0;
+    var total = 0;
+    
+    function payment_summary(){
+
+        subtotal = 0;
+        gst = 0;
+        discount = 0;
+        total = 0;
+
+        for (let i = 0; i < current_bill.length; i++) {
+            const product = current_bill[i];
+            product_cost = parseFloat(product.price.replace('₹', ''));
+            product_gst = parseFloat(product.gst);
+            product_qty = parseInt(product.qty);
+            gst_cost = (product_cost * product_gst)/100;
+            gst += gst_cost * product_qty;
+            subtotal += (product_cost - gst_cost) * product_qty;
+        }
+
+        const subtotal_element = document.getElementById('subtotal');
+        const gst_element = document.getElementById('gst');
+        const discount_element = document.getElementById('discount_value');
+        const total_element = document.getElementById('total');
+        total = (subtotal + gst - discount).toFixed(2);
+
+        subtotal_element.innerText = '₹' + subtotal.toFixed(2);
+        gst_element.innerText = '₹' + gst.toFixed(2);
+        total_element.innerText = '₹' + total;
+
+    }
+
+    (async () => {
+        await fetchBarcodeData();
+    })();
+
+    const modal_bg = document.getElementById('modal_bg');
+    const payment_modal = document.getElementById('payment_modal');
+
+    function close_payment_modal() {
+        modal_bg.classList.add('hidden');
+        payment_modal.classList.add('hidden');
+    }
+
+    function open_payment_modal(){
+        const cashier_selected = select_cashier_fail();
+        if (cashier_selected === false) {
+            modal_bg.classList.remove('hidden');
+            cashier_selected_fail_modal.classList.remove('hidden'); 
+        } else {
+          modal_bg.classList.remove('hidden');
+          payment_modal.classList.remove('hidden');
+        }
+    }
+
+    const payment_cash_element = document.getElementById('payment_cash_element');
+    const payment_card_element = document.getElementById('payment_card_element');
+    const payment_upi_element = document.getElementById('payment_upi_element');
+
+    payment_methods=[];
+
+    function payment_cash(){
+        if (payment_cash_element.classList.contains('border-blue-500')) {
+            payment_cash_element.classList.remove('border-blue-500');
+            payment_cash_element.classList.remove('border-2');
+            payment_cash_element.classList.add('border-gray-200');
+            payment_cash_element.classList.add('border');
+            payment_methods = payment_methods.filter(item => item !== 'cash');
+        } else {
+            payment_cash_element.classList.remove('border-gray-200');
+            payment_cash_element.classList.remove('border');
+            payment_cash_element.classList.add('border-2');
+            payment_cash_element.classList.add('border-blue-500');
+            payment_methods.push('cash');
+        }
+        render_payment_methods_summary();
+    }
+
+    function payment_card(){
+        if (payment_card_element.classList.contains('border-blue-500')) {
+            payment_card_element.classList.remove('border-blue-500');
+            payment_card_element.classList.remove('border-2');
+            payment_card_element.classList.add('border-gray-200');
+            payment_card_element.classList.add('border');
+            payment_methods = payment_methods.filter(item => item !== 'card');
+        } else {
+            payment_card_element.classList.remove('border-gray-200');
+            payment_card_element.classList.remove('border');
+            payment_card_element.classList.add('border-2');
+            payment_card_element.classList.add('border-blue-500');
+            payment_methods.push('card');
+        }
+        render_payment_methods_summary();
+    }
+
+    function payment_upi(){
+        if (payment_upi_element.classList.contains('border-blue-500')) {
+            payment_upi_element.classList.remove('border-blue-500');
+            payment_upi_element.classList.remove('border-2');
+            payment_upi_element.classList.add('border-gray-200');
+            payment_upi_element.classList.add('border');
+            payment_methods = payment_methods.filter(item => item !== 'upi');
+        } else {
+            payment_upi_element.classList.remove('border-gray-200');
+            payment_upi_element.classList.remove('border');
+            payment_upi_element.classList.add('border-2');
+            payment_upi_element.classList.add('border-blue-500');
+            payment_methods.push('upi');
+        }
+        render_payment_methods_summary();
+    }
+
+    const payment_methods_summary = document.getElementById('payment_methods_summary');
+    const payment_cash_summary = document.getElementById('payment_cash_summary');
+    const payment_card_summary = document.getElementById('payment_card_summary');
+    const payment_upi_summary = document.getElementById('payment_upi_summary');
+    const payment_cash_input = document.getElementById('payment_cash_input');
+    const payment_card_input = document.getElementById('payment_card_input');
+    const payment_upi_input = document.getElementById('payment_upi_input');
+    const generate_receipt_button = document.getElementById('generate_receipt');
+
+    function select_cashier_fail(){
+        current_cashier = findCookie('current_cashier');
+        if (current_cashier === 'Select Cashier') {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    function close_cashier_selected_fail_modal(){
+        cashier_selected_fail_modal.classList.add('hidden');
+        modal_bg.classList.add('hidden');
+    }
+
+    function render_payment_methods_summary(){
+        generate_receipt_button.classList.remove('hidden');
+        if (payment_methods.length === 1){
+            payment_cash_input.value = 0;
+            payment_card_input.value = 0;
+            payment_upi_input.value = 0;
+            if (payment_methods[0] === 'cash'){
+              payment_cash_input.value = total;
+              payment_cash_summary.classList.remove('hidden');
+              payment_card_summary.classList.add('hidden');
+              payment_upi_summary.classList.add('hidden');
+              payment_methods_summary.classList.remove('hidden');
+            } else if (payment_methods[0] === 'card'){
+              payment_card_input.value = total;
+              payment_cash_summary.classList.add('hidden');
+              payment_card_summary.classList.remove('hidden');
+              payment_upi_summary.classList.add('hidden');
+              payment_methods_summary.classList.remove('hidden');
+            } else if (payment_methods[0] === 'upi'){
+              payment_upi_input.value = total;
+              payment_cash_summary.classList.add('hidden');
+              payment_card_summary.classList.add('hidden');
+              payment_upi_summary.classList.remove('hidden');
+              payment_methods_summary.classList.remove('hidden');
+            }
+
+        } else if (payment_methods.length === 0){
+            generate_receipt_button.classList.add('hidden');
+            payment_methods_summary.classList.add('hidden');
+            payment_cash_summary.classList.add('hidden');
+            payment_card_summary.classList.add('hidden');
+            payment_upi_summary.classList.add('hidden');
+            payment_cash_input.value = 0;
+            payment_card_input.value = 0;
+            payment_upi_input.value = 0;
+        } else {
+              payment_cash_input.value = 0;
+              payment_card_input.value = 0;
+              payment_upi_input.value = 0;
+              payment_cash_summary.classList.add('hidden');
+              payment_card_summary.classList.add('hidden');
+              payment_upi_summary.classList.add('hidden');
+
+              for (var i = 0; i < payment_methods.length; i++) {
+                  if (payment_methods[i] === 'cash') {
+                      payment_cash_summary.classList.remove('hidden');
+                  } else if (payment_methods[i] === 'card') {
+                      payment_card_summary.classList.remove('hidden');
+                  } else if (payment_methods[i] === 'upi') {
+                      payment_upi_summary.classList.remove('hidden');
+                  }
+              }
+              payment_methods_summary.classList.remove('hidden');
+      }
+    }
+
+    const payment_methods_sum_fail = document.getElementById('payment_methods_sum_fail');
+
+    function generate_receipt(){
+        generate_receipt_button.disabled = true;
+        generate_receipt_button.innerHTML = `<svg aria-hidden="true" role="status" class="inline w-4 h-4 me-3 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="#E5E7EB"/>
+                                                <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentColor"/>
+                                              </svg>
+                                              Loading...
+                                            `;
+        let payment_methods_sum = 0;
+        for (const method of payment_methods) {
+            if (method === 'cash') {
+                payment_methods_sum += parseFloat(payment_cash_input.value);
+            } else if (method === 'card') {
+                payment_methods_sum += parseFloat(payment_card_input.value);
+            } else if (method === 'upi') {
+                payment_methods_sum += parseFloat(payment_upi_input.value);
+            }
+        }
+        
+        if (payment_methods_sum.toFixed(2) !== parseFloat(total).toFixed(2)){
+            payment_methods_sum_fail.classList.remove('hidden');
+            payment_modal.classList.add('hidden');
+        } else {
+            console.log('Generating receipt...');
+            Create_E_Receipt()
+            //window.location.reload();
+        }
+    }
+
+    function close_payment_methods_sum_fail_modal(){
+        payment_methods_sum_fail.classList.add('hidden');
+        payment_modal.classList.remove('hidden');
+    }
+
+
+    //peerjs
+    
+    var connection_id = '';
+    var conn;
+    var peer = null; 
+    var connections = {}; 
+
+    function setupMerchant() {
+        peer = new Peer();
+        peer.on('open', function(id) {
+            connection_id = id;
+            generate_qr(connection_id);
+            console.log('Merchant peer ID is: ' + id);
+        });
+
+        peer.on('error', function(err) {
+            console.error('Merchant Peer connection error:', err);
+        });
+
+        peer.on('connection', function(conn) {
+            console.log('Connection established with peer: ' + conn.peer);
+            connections[conn.peer] = conn; 
+            conn.on('data', function(data) {
+                console.log('Received data from peer ' + conn.peer + ': ' + data);
+                if (data === 'init') {
+                    send_peers();
+                }
+            });
+        });
+    }
+
+    setupMerchant();
+
+    function send_peers() {
+      data = { 'store_name': store_name, 'receipt_id': 21312313, 'receipt': current_bill, 'subtotal': subtotal, 'gst': gst, 'discount': discount, 'total': total };
+        Object.values(connections).forEach(function(conn) {
+            conn.send(data);
+            console.log('connection:' + conn.peer, 'message:', data);
+        });
+    }
+
+    function CloseBillCreationStatusModal()
+    {
+      const bill_creation_modal = document.getElementById('popup-modal');
+
+
+      const options = {
+    placement: 'bottom-right',
+    backdrop: 'dynamic',
+    backdropClasses:
+        'bg-gray-900/50 dark:bg-gray-900/80 fixed inset-0 z-40',
+    closable: true,
+    onHide: () => {
+        console.log('modal is hidden');
+    },
+    onShow: () => {
+        console.log('modal is shown');
+    },
+    onToggle: () => {
+        console.log('modal has been toggled');
+    },
+};
+
+      const instanceOptions = {id: 'popup-modal',override: true};
+      const modal = new Modal(bill_creation_modal, options, instanceOptions);
+      resetBill()
+      modal.hide();
+    }
+
+
+
+    function ShowBillCreationStatusModal()
+    {
+      const bill_creation_modal = document.getElementById('popup-modal');
+
+
+      const options = {
+    placement: 'bottom-right',
+    backdrop: 'dynamic',
+    backdropClasses:
+        'bg-gray-900/50 dark:bg-gray-900/80 fixed inset-0 z-40',
+    closable: true,
+    onHide: () => {
+        console.log('modal is hidden');
+    },
+    onShow: () => {
+        console.log('modal is shown');
+    },
+    onToggle: () => {
+        console.log('modal has been toggled');
+    },
+};
+
+      const instanceOptions = {id: 'popup-modal',override: true};
+      const modal = new Modal(bill_creation_modal, options, instanceOptions);
+      modal.show();
+    }
+
+    
+    function getCurrentDate() {
+      const currentdate_1 = new Date();
+      const year = currentdate_1.getFullYear();
+      const month = String(currentdate_1.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+      const day = String(currentdate_1.getDate()).padStart(2, '0');
+      return `${day}-${month}-${year}`;
+      }
+
+    function getCurrentTime() {
+      const currentTime = new Date();
+      let hours = currentTime.getHours();
+      const minutes = currentTime.getMinutes();
+      const seconds = currentTime.getSeconds();
+      const amOrPm = hours >= 12 ? 'PM' : 'AM';
+      hours = hours % 12;
+      hours = hours ? hours : 12; 
+      const formattedHours = hours < 10 ? `0${hours}` : hours;
+      const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+      const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
+      const formattedTime = `${formattedHours}:${formattedMinutes}:${formattedSeconds} ${amOrPm}`;
+      return formattedTime;
+    }
+
+    // Example usage:
+    const date_1 = getCurrentDate();
+    const time = getCurrentTime();
+    //console.log(`Current date: ${date}`);
+    //console.log(`Current time: ${time}`);
+
+
+        async function Create_E_Receipt(){
+            const response = await fetch('/receipt/create', {
+        method: 'POST',
+
+        headers: {'Content-Type': 'application/json'},
+
+        body: JSON.stringify({"data":current_bill,"merchantid":merchant_id,"deviceid":device_id,"receipt_ref":receipt_ref,"store_name":store_name,"store_location":store_loc,"payment_methods":payment_methods,"customer_number":document.getElementById("customer_number").value,"date":getCurrentDate(),"time":getCurrentTime()})
+      })
+      const responseText = await response.text();
+      E_receipt_creation_status = JSON.parse(responseText).status// logs 'OK'
+      console.log("E-receipt_creation_status : "+E_receipt_creation_status)
+      if(E_receipt_creation_status == "Success"){
+        close_payment_modal()
+        console.log("Showing MODAL")
+        ShowBillCreationStatusModal()
+        //setTimeout(5000)
+      }
+      return E_receipt_creation_status
+          }
+
+
+      const ProcessPaymentsbtn = document.getElementById("generate_receipt")
+         // ProcessPaymentsbtn.addEventListener("click",Create_E_Receipt)
+
+
+</script>

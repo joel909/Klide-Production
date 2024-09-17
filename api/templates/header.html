@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% include 'meta.html' %}
+  <link href="/static/css/output.css" rel="stylesheet"></link>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+  <script src="/static/node_modules/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+  <link rel="stylesheet" href="/static/node_modules/apexcharts/dist/apexcharts.css">
+  <script src="/static/node_modules/lodash/lodash.min.js"></script>
+  <script src="/static/node_modules/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="/static/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/static/node_modules/datatables.net/js/dataTables.min.js"></script>
+  <script src="/static/node_modules/preline/dist/preline.js"></script>
+  <style>
+    .rubik-300, .rubik-400, .rubik-500, .rubik-600, .rubik-700, .rubik-800, .rubik-900 {
+      font-family: "Rubik", sans-serif;
+      font-optical-sizing: auto;
+      font-style: normal;
+    }
+    .rubik-300 { font-weight: 300; }
+    .rubik-400 { font-weight: 400; }
+    .rubik-500 { font-weight: 500; }
+    .rubik-600 { font-weight: 600; }
+    .rubik-700 { font-weight: 700; }
+    .rubik-800 { font-weight: 800; }
+    .rubik-900 { font-weight: 900; }
+    @media print {    
+      .no-print { display: none !important; }
+    }
+    .dt-layout-row:has(.dt-search),
+    .dt-layout-row:has(.dt-length),
+    .dt-layout-row:has(.dt-paging) {
+      display: none !important;
+    }
+  </style>
+</head>
+<script>
+
+  function getCookies() {
+      let cookies = document.cookie;
+      let allCookies = [];
+      let allCookiesArray = cookies.split(";");
+      allCookiesArray.forEach((cookie) => {
+        let cookiePair = cookie.split("=");
+        let cookieKey = cookiePair[0].trim();
+        let cookieValue = cookiePair[1];
+        allCookies.push({
+          [cookieKey]: cookieValue
+        });
+      });
+      console.log(allCookies);
+      return allCookies;
+  }
+
+  function findCookie(cookieName) {
+      let formatted_cookie = "" 
+      const cookies = getCookies();
+      for (let i = 0; i < cookies.length; i++) {
+        const cookie = cookies[i];
+        if (cookie.hasOwnProperty(cookieName)) {
+          console.log(cookieName)
+          if(cookie[cookieName].charAt(0)=='"'&& cookie[cookieName].charAt((cookie[cookieName].length)-1) == '"'){
+            formatted_cookie =  cookie[cookieName].replaceAll('"','')
+            console.log("UPDATEGDFVE"+formatted_cookie)
+          }
+          else {
+            console.log(cookie[cookieName])
+            formatted_cookie = cookie[cookieName]
+          }
+          if(cookieName=="employees"){
+            const cleanedString = formatted_cookie.slice(1, -1);
+            let resultArray = cleanedString.split('\\054');
+            resultArray = resultArray.map((element) => element.replace(/\\/g, ''));
+            formatted_cookie = resultArray
+            console.log("Returned Employe")
+            console.log(formatted_cookie)
+          }
+          return formatted_cookie
+        }
+      }
+      return null;
+  }
+
+  const cookieName = "your_cookie_name";
+  const cookieValue = findCookie(cookieName);
+  if (cookieValue !== null) {
+    console.log(`Cookie ${cookieName} found: ${cookieValue}`);
+  } else {
+    console.log(`Cookie ${cookieName} not found.`);
+  }
+
+  VerifyCookies_Redirect()
+
+  function VerifyCookies_Redirect() {
+      let merchant_id = findCookie("merchant_id")
+      let device_id = findCookie("device_id")
+      let store_name = findCookie("store_name")
+      let device_type = findCookie("device_type")
+      console.log("dfdgf" + merchant_id)
+      console.log(window.location.pathname == "/account/login")
+      const window_loc = window.location.pathname
+     
+      if (merchant_id != null && device_id != null && "/account/login" == window.location.pathname){
+        console.log("here")
+        window.location.href = "/transactions"
+      }
+        else if (window_loc.includes("/account/setup")){
+        console.log("SETUP PAGE")
+      }
+       else if ((merchant_id == null || device_id == null) && ("/account/login" != window.location.pathname)) {
+        console.log("LOGGIN USER OUT")
+        window.location.href = "/account/login"
+      } 
+      else if (merchant_id != null && device_id != null && device_type == "admin" && window.location.pathname != "/admin/dashboard"){
+        console.log("LOGGIN USER OUT")
+        window.location.href = "/admin/dashboard"
+      } 
+      else if (store_name == null) {
+        console.log("MERCHANT NAME NOT FOUND")
+      }
+      console.log("merchant ID : " + merchant_id)
+      console.log("device ID : " + device_id)
+      console.log("Merchant Name : " + store_name)
+  }
+
+const urlparams = window.location.pathname;
+if (urlparams.includes('login') === false) {
+  cookieStore.addEventListener("change", async ({ changed }) => {
+    if (window.location.pathname != "/account/login" && changed[0].name !== "current_cashier") {
+      let allcookies = await cookieStore.getAll();
+      console.log("DELETING COOKIES");
+      allcookies.forEach((cookie) => {
+        const cookieName = cookie["name"];
+        cookieStore.delete(cookieName);
+        console.log("Deleted : " + cookieName);
+      });
+      window.location.href = "/account/login";
+    }
+  });
+}
+
+function setCookie(name, value) {
+  document.cookie = name + "=" + value + "; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/";
+}
+</script>
+</html>
