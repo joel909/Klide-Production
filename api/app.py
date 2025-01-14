@@ -72,6 +72,10 @@ def render_admin_page(template_name):
 def index():
     return render_template("public/index.html")
 
+@app.route("/test")
+def test():
+    return render_template("public/index.html")
+
 @app.route("/updates")
 def updates():
     return render_template("public/updates.html")
